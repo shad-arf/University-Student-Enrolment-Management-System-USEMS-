@@ -22,15 +22,17 @@
 
            
           </ul>
-          <ul class="nav navbar-nav float-right">
+         <!-- <ul class="nav navbar-nav float-right">
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">Hello,
                   <?php
+                  /*
 $uid=$_SESSION['uid'];
 $ret=mysqli_query($con,"select FirstName from tbluser where ID='$uid'");
 $row=mysqli_fetch_array($ret);
 $name=$row['FirstName'];
+*/
 
 ?>
                   <span class="user-name text-bold-700" ><?php echo $name; ?></span>
@@ -53,6 +55,7 @@ $name=$row['FirstName'];
         
      
           </ul>
+-->
         </div>
       </div>
     </div>

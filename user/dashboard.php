@@ -25,9 +25,9 @@ header('location:logout.php');
   <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
-<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
-data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   <!-- fixed-top-->
+
    <?php include_once('includes/header.php');?>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
  <?php include_once('includes/leftbar.php');?>
@@ -39,11 +39,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <!-- Revenue, Hit Rate & Deals -->
                          <?php
 $uid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select FirstName from tbluser where ID='$uid'");
+
+$ret=mysqli_query($conn,"select FirstName from tbluser where ID='$uid'");
 $row=mysqli_fetch_array($ret);
 $name=$row['FirstName'];
 
 ?>
+
 <h3><font color="red">Welcome Back :</font> <?php echo $name;?> </h3>
 <hr />
 
