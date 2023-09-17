@@ -6,7 +6,7 @@ if(isset($_POST['login']))
   {
     $emailcon=$_POST['emailcont'];
     $password=md5($_POST['password']);
-    $query=mysqli_query($conn,"select ID from tbluser where  (Email='$emailcon' || MobileNumber='$emailcon') && Password='$password' ");
+    $query=mysqli_query($con,"select ID from tbluser where  (Email='$emailcon' || MobileNumber='$emailcon') && Password='$password' ");
     $ret=mysqli_fetch_array($query);
     if($ret>0){
       $_SESSION['uid']=$ret['ID'];

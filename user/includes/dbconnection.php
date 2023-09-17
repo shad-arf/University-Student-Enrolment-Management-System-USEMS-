@@ -15,6 +15,6 @@ $dBName = "student_data";
 
 $conn = mysqli_connect($servername , $dBUsername  , $dBPwd , $dBName);
 
-if (!$conn){
+if (!$con){
     die("Connection Timed Out: ".mysqli_connect_error());
 }

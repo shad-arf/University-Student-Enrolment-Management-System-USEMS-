@@ -40,7 +40,7 @@ header('location:logout.php');
                          <?php
 $uid=$_SESSION['uid'];
 
-$ret=mysqli_query($conn,"select FirstName from tbluser where ID='$uid'");
+$ret=mysqli_query($con,"select FirstName from tbluser where ID='$uid'");
 $row=mysqli_fetch_array($ret);
 $name=$row['FirstName'];
 

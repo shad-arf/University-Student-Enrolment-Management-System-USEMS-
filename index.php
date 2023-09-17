@@ -71,7 +71,7 @@ include_once('user/includes/dbconnection.php');
 
                          <hr>
 <marquee behavior="alternate" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
-    <?php $query=mysqli_query($conn,"select * from tblnotice");
+    <?php $query=mysqli_query($con,"select * from tblnotice");
 while ($row=mysqli_fetch_array($query)) {
 ?>
 
