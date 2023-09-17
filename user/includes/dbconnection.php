@@ -13,7 +13,7 @@ $dBUsername = "root";
 $dBPwd = "";
 $dBName = "student_data";
 
-$conn = mysqli_connect($servername , $dBUsername  , $dBPwd , $dBName);
+$con = mysqli_connect($servername , $dBUsername  , $dBPwd , $dBName);
 
 if (!$con){
     die("Connection Timed Out: ".mysqli_connect_error());
