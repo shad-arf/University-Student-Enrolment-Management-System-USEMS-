@@ -4,7 +4,7 @@ error_reporting(0);
 include('includes/dbconnection.php');
 
 if (isset($_POST['login'])) {
-    $username = $_POST['email'];
+    $username = $_POST['number'];
     $password = $_POST['password'];
 
     // Use prepared statements to prevent SQL injection
@@ -91,7 +91,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                     
                     <form class="form-horizontal" action="" name="login"  method="post">  
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" name="email" id="email" class="form-control input-lg" placeholder="Registered Email or Contact Number"
+                        <input type="number" name="number" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
                       required="true" >
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
@@ -100,7 +100,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                       </fieldset>
                           <fieldset class="form-group position-relative has-icon-left">
                             <input type="password" name="password" id="password" class="form-control input-lg"
-                            placeholder="Password" tabindex="5" required>
+                            placeholder="سڕیال کۆد" tabindex="5" required>
                             <div class="form-control-position">
                               <i class="la la-key"></i>
                             </div>
