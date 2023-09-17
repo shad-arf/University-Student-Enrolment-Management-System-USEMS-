@@ -2,21 +2,32 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if(isset($_POST['login']))
-  {
-    $emailcon=$_POST['emailcont'];
-    $password=md5($_POST['password']);
-    $query=mysqli_query($con,"select ID from tbluser where  (Email='$emailcon' || MobileNumber='$emailcon') && Password='$password' ");
-    $ret=mysqli_fetch_array($query);
-    if($ret>0){
-      $_SESSION['uid']=$ret['ID'];
-     echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+
+if (isset($_POST['login'])) {
+    $username = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Use prepared statements to prevent SQL injection
+    $query = "SELECT `COL 1`, `COL 2`, `COL 3` FROM student_data WHERE `COL 2` = ? AND `COL 3` = ?";
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        mysqli_stmt_bind_result($stmt, $col1, $col2, $col3);
+        mysqli_stmt_fetch($stmt);
+        $_SESSION['uid'] = $col1;
+        echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
+    } else {
+        echo "<script>alert('Invalid Details');</script>";
     }
-    else{
-    echo "<script>alert('Invalid Details');</script>";
-    }
-  }
-  ?>
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($con);
+}
+?>
+
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -80,7 +91,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                     
                     <form class="form-horizontal" action="" name="login"  method="post">  
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text" name="emailcont" id="email" class="form-control input-lg" placeholder="Registered Email or Contact Number"
+                        <input type="text" name="email" id="email" class="form-control input-lg" placeholder="Registered Email or Contact Number"
                       required="true" >
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
@@ -104,6 +115,32 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                         </div>
                       </div>
                        <div class="col-6 col-sm-6 col-md-6">
+                       <?php
+                            session_start();
+                            include('includes/dbconnection.php');
+
+                            // Perform a query to retrieve data
+                            $query = "SELECT * FROM student_data";
+                            $result = mysqli_query($con, $query);
+
+                            // Display data in a table
+                            echo "<table>";
+                            echo "<tr><th>ID</th><th>Name</th><th>Email</th></tr>";
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $row['COL 1'] . "</td>";
+                                echo "<td>" . $row['COL 2'] . "</td>";
+                                echo "<td>" . $row['COL 3'] . "</td>";
+                                echo "</tr>";
+                            }
+
+                            echo "</table>";
+
+                            // Close the database connection
+                            mysqli_close($con);
+                            ?>
+
                           <p><a href="forget-password.php">Forgot password?</a></p>
                         </div>
                       </div>
