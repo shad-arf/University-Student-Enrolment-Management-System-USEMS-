@@ -4,20 +4,19 @@ error_reporting(0);
 include('includes/dbconnection.php');
 
 if (isset($_POST['login'])) {
-    $username = $_POST['number'];
+    $code = $_POST['code'];
     $password = $_POST['password'];
 
     // Use prepared statements to prevent SQL injection
-    $query = "SELECT `COL 1`, `COL 2`, `COL 3` FROM student_data WHERE `COL 2` = ? AND `COL 3` = ?";
+    $query = "SELECT code, password FROM sheet1 WHERE code = ?";
     $stmt = mysqli_prepare($con, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+    mysqli_stmt_bind_param($stmt, "s", $code);
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
+    mysqli_stmt_bind_result($stmt, $dbCode, $dbPassword);
+    mysqli_stmt_fetch($stmt);
 
-    if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_bind_result($stmt, $col1, $col2, $col3);
-        mysqli_stmt_fetch($stmt);
-        $_SESSION['uid'] = $col1;
+    if (password_verify($password, $dbPassword)) {
+        $_SESSION['code'] = $code;
         echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
     } else {
         echo "<script>alert('Invalid Details');</script>";
@@ -27,6 +26,7 @@ if (isset($_POST['login'])) {
     mysqli_close($con);
 }
 ?>
+
 
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
@@ -91,7 +91,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                     
                     <form class="form-horizontal" action="" name="login"  method="post">  
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="number" name="number" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
+                        <input type="number" name="code" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
                       required="true" >
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
@@ -118,20 +118,21 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                        <?php
                             session_start();
                             include('includes/dbconnection.php');
-
+                            
                             // Perform a query to retrieve data
-                            $query = "SELECT * FROM student_data";
+                            $query = "SELECT * FROM sheet1";
                             $result = mysqli_query($con, $query);
-
+                     
+                            
                             // Display data in a table
                             echo "<table>";
                             echo "<tr><th>ID</th><th>Name</th><th>Email</th></tr>";
 
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>" . $row['COL 1'] . "</td>";
-                                echo "<td>" . $row['COL 2'] . "</td>";
-                                echo "<td>" . $row['COL 3'] . "</td>";
+                                echo "<td>" . $row['name'] . "</td>";
+                                echo "<td>" . $row['code'] . "</td>";
+                                echo "<td>" . $row['password'] . "</td>";
                                 echo "</tr>";
                             }
 
@@ -140,8 +141,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                             // Close the database connection
                             mysqli_close($con);
                             ?>
-
-                          <p><a href="forget-password.php">Forgot password?</a></p>
+                       <div class="col-6 col-sm-6 col-md-6">
                         </div>
                       </div>
                     </form>

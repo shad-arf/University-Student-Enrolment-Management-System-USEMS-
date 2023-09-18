@@ -28,10 +28,10 @@
                 <span class="mr-1">Hello,
                   <?php
                 
-$uid=$_SESSION['uid'];
-$ret=mysqli_query($con,"select FirstName from tbluser where ID='$uid'");
-$row=mysqli_fetch_array($ret);
-$name=$row['FirstName'];
+                $uid=$_SESSION['code'];
+                $ret=mysqli_query($con,"select name from student where code=$uid");
+                $row=mysqli_fetch_array($ret);
+                $name=$row['name'];
 
 
 ?>

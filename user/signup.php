@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
   $password = md5($_POST['password']);
   
   // Check if the email or mobile number already exists in the database
-  $ret = mysqli_query($con, "SELECT Email FROM tbluser WHERE Email='$email' OR MobileNumber='$contno'");
+  $ret = mysqli_query($con, "SELECT Email FROM tbluser WHERE Email=? OR MobileNumber=? ");
   
   if (mysqli_num_rows($ret) > 0) {
       echo "<script>alert('This email or Contact Number already associated with another account');</script>";
