@@ -1,33 +1,3 @@
-<?php
-session_start();
-error_reporting(0);
-include('includes/dbconnection.php');
-
-if (isset($_POST['login'])) {
-    $code = $_POST['code'];
-    $password = $_POST['password'];
-
-    // Use prepared statements to prevent SQL injection
-    $query = "SELECT code, password FROM sheet1 WHERE code = ?";
-    $stmt = mysqli_prepare($con, $query);
-    mysqli_stmt_bind_param($stmt, "s", $code);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $dbCode, $dbPassword);
-    mysqli_stmt_fetch($stmt);
-
-    if (password_verify($password, $dbPassword)) {
-        $_SESSION['code'] = $code;
-        echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
-    } else {
-        echo "<script>alert('Invalid Details');</script>";
-    }
-
-    mysqli_stmt_close($stmt);
-    mysqli_close($con);
-}
-?>
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -89,7 +59,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                 <div class="card-content">
                   <div class="card-body">
                     
-                    <form class="form-horizontal" action="" name="login"  method="post">  
+                    <form class="form-horizontal" action="login.inc.php"   method="post">  
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="number" name="code" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
                       required="true" >
@@ -99,7 +69,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                         <div class="help-block font-small-3"></div>
                       </fieldset>
                           <fieldset class="form-group position-relative has-icon-left">
-                            <input type="password" name="password" id="password" class="form-control input-lg"
+                            <input type="password" name="passcode" id="password" class="form-control input-lg"
                             placeholder="سڕیال کۆد" tabindex="5" required>
                             <div class="form-control-position">
                               <i class="la la-key"></i>
@@ -111,37 +81,11 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                           <button type="submit" name="login" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i> Login</button>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6">
-                          <a href="signup.php" class="btn btn-danger btn-lg btn-block" name="login" type="text"><i class="ft-unlock"></i> Register</a>
+                          <a href="signup.php" class="btn btn-danger btn-lg btn-block"  type="text"><i class="ft-unlock"></i> Register</a>
                         </div>
                       </div>
                        <div class="col-6 col-sm-6 col-md-6">
-                       <?php
-                            session_start();
-                            include('includes/dbconnection.php');
-                            
-                            // Perform a query to retrieve data
-                            $query = "SELECT * FROM sheet1";
-                            $result = mysqli_query($con, $query);
-                     
-                            
-                            // Display data in a table
-                            echo "<table>";
-                            echo "<tr><th>ID</th><th>Name</th><th>Email</th></tr>";
-
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<td>" . $row['name'] . "</td>";
-                                echo "<td>" . $row['code'] . "</td>";
-                                echo "<td>" . $row['password'] . "</td>";
-                                echo "</tr>";
-                            }
-
-                            echo "</table>";
-
-                            // Close the database connection
-                            mysqli_close($con);
-                            ?>
-                       <div class="col-6 col-sm-6 col-md-6">
+                      
                         </div>
                       </div>
                     </form>
