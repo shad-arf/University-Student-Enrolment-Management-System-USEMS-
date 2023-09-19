@@ -9,7 +9,6 @@ if(isset($_POST['login']))
     $password=($_POST['password']);
     $query=mysqli_query($con,"SELECT ID FROM tbladmin where  AdminuserName='$adminuser' && Password='$password' ");
     $ret=mysqli_fetch_array($query);
-    die($password);
     if($ret>0){
       $_SESSION['aid']=$ret['ID'];
      echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";

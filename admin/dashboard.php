@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
 include('includes/dbconnection.php');
 if(strlen($_SESSION['aid'])==0){
 header('location:logout.php');
@@ -71,7 +70,7 @@ $cntcourse=mysqli_num_rows($sql);
                   <div class="media d-flex">
                     <div class="media-body text-left">
 <?php 
-$wer =mysqli_query($con ,"SELECT id from tbluser");
+$wer =mysqli_query($con ,"SELECT id from student_data");
 $cntuser=mysqli_num_rows($wer);
  ?>
  <h3 class="warning"><?php echo $cntuser;?></h3>

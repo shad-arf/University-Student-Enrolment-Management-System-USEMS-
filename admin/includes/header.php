@@ -50,7 +50,8 @@ $name=$row['AdminName'];
               </div>
             </li>
 
-<?php $qury=mysqli_query($con,"SELECT  tbladmapplications.id as appid,tbluser.FirstName from tbladmapplications join tbluser on tbluser.id=tbladmapplications.userId where status='pending'");
+<?php 
+$qury = mysqli_query($con, "SELECT tbladmapplications.id as appid, student_data.Name from tbladmapplications join student_data on student_data.id=tbladmapplications.userId where status='pending'");
 $num=mysqli_num_rows($qury);
 ?>
 
@@ -75,15 +76,15 @@ $yui =mysqli_query($con ,"SELECT * from tbladmapplications where status='pending
 while ($row=mysqli_fetch_array($yui)) {
 
 
-?>
-<a href="view-appform.php?aticid=<?php echo $row['appid'];?>">
+?><!--
+<a href="view-appform.php?aticid=<?php //echo $row['appid'];?>">-->
                     <div class="media">
                       <div class="media-left align-self-center"><i class="ft-plus-square icon-bg-circle bg-cyan"></i></div>
                       <div class="media-body">
                         <h6 class="media-heading"><b><?php echo $row['firstName'];?></b> applied for admission</h6>
-                        <small>
+                      <!--  <small>
 <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">at <?php echo $row['time'];?></time>
-                        </small>
+                        </small>-->
                       </div>
                     </div>
                   </a>
