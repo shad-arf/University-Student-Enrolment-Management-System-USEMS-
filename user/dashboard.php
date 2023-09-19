@@ -29,7 +29,6 @@ header('location:logout.php');
   <!-- fixed-top-->
 
    <?php include_once('includes/header.php');?>
-  <!-- ////////////////////////////////////////////////////////////////////////////-->
  <?php include_once('includes/leftbar.php');?>
   <div class="app-content content">
     <div class="content-wrapper">
@@ -43,13 +42,6 @@ $uid=$_SESSION['uid'];
 $ret=mysqli_query($con,"select FirstName from tbluser where ID='$uid'");
 $row=mysqli_fetch_array($ret);
 $name=$row['FirstName'];
-
-?>
-
-<h3><font color="red">Welcome Back :</font> <?php echo $name;?> </h3>
-<hr />
-
-<?php 
 $uid=$_SESSION['uid'];
 $rtp =mysqli_query($con ,"SELECT status from tbladmapplications where userId='$uid'");
 $row=mysqli_fetch_array($rtp);
@@ -70,14 +62,14 @@ if($row>0){
 
 
 <?php if($adsts=="selected") {?>
-                      <h4 align="center">Your Application has been  selected</h4>
+                      <h4 align="center">داواکارییەکەت وەرگیرە</h4>
                     <?php } ?>
 
                     <?php if($adsts=="rejected") {?>
-                      <h4 align="center">Your Application has been  rejected</h4>
+                      <h4 align="center">داواکارییەکەت هەلوەشایەوە </h4>
                     <?php } ?>
 <?php if($adsts=="pending") {?>
-                      <h4 align="center">Your Application has been pending with admin for review</h4>
+                      <h4 align="center">داواکارییەکەت لە چاوەروانی دایە لەلایەن ئەدمینانی زانکۆی سۆران </h4>
                     <?php } ?>
 
                     </div>
@@ -114,7 +106,7 @@ if($row>0){
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
-                      <h4 align="center">You have not applied for addmision. Please fill the admission form.</h4>
+                      <h4 align="center">تۆ داواکاری خۆتۆمارکردنت بۆ زانکۆی سۆران نەناردووە تکایە فۆرمی خۆ تۆمارکردن پڕبکەرەوە </h4>
                     </div>
                     <div>
          <i class="icon-file success font-large-2 float-right"></i>
@@ -143,7 +135,7 @@ if($row>0){
                       <div class="media d-flex">
                         <div class="media-body text-left">
     
-                          <h4 align="center">Your Application has been  selected. Please Upload your documents</h4>
+                          <h4 align="center">داواکارییەکەت وەرگیرا تکایە دۆکیومێنەتەکانت بنێرە </h4>
                       
     
                         </div>
@@ -183,7 +175,7 @@ if($adsts=="selected"  )
 
 
 
-                      <h4 align="center">Your second Application has been  selected you can print badge</h4>
+                      <h4 align="center">دووەم داواکاریت وەرگیرا دەتوانیت داواکاریەکەت پرێنت بکەیت /h4>
                   
 
                     </div>

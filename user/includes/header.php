@@ -4,10 +4,7 @@
         <ul class="nav navbar-nav flex-row">
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item mr-auto">
-            <a class="navbar-brand" href="dashboard.php">
-        
-              <h3 class="brand-text"><img src="https://1.bp.blogspot.com/-zeWCdTyFgZ4/YMhnzVchAlI/AAAAAAAAFaA/aWBlSPn-kSEsRVVi-LmAqoDHIzsG7JoaQCLcBGAsYHQ/s0/logo.png" alt="Girl in a jacket" width="50"> JLN College</h3>
-            </a>
+           
           </li>
           <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white" data-ticon="ft-toggle-right"></i></a></li>
           <li class="nav-item d-md-none">
@@ -39,15 +36,10 @@
                 </span>
                 <span class="avatar avatar-online">
                   <img src="app-assets/images/user.png" alt="avatar"><i></i></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="userprofile.php"><i class="ft-user"></i> Edit Profile</a>
+             <!-- this is temp file --> 
+              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="userprofile.php"><i class="ft-user"></i> view Profile</a>
                 <span class="avatar avatar-online">
                   </span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="change-password.php"><i class="ft-user"></i> Change Pass</a>
-
-
-                
                 <div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php"><i class="ft-power"></i> Logout</a>
               </div>
             </li>
