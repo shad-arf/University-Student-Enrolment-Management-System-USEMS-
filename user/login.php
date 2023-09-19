@@ -59,7 +59,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                 <div class="card-content">
                   <div class="card-body">
                     
-                    <form class="form-horizontal" action="login.inc.php"   method="GET">  
+                    <form class="form-horizontal" action="login.inc.php"   method="POST">  
                       <fieldset class="form-group position-relative has-icon-left">
                         <input type="text" name="code" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
                       required="true" >
