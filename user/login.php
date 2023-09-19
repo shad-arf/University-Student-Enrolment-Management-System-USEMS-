@@ -59,9 +59,9 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                 <div class="card-content">
                   <div class="card-body">
                     
-                    <form class="form-horizontal" action="login.inc.php"   method="post">  
+                    <form class="form-horizontal" action="login.inc.php"   method="GET">  
                       <fieldset class="form-group position-relative has-icon-left">
-                        <input type="number" name="code" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
+                        <input type="text" name="code" id="email" class="form-control input-lg" placeholder="کۆدی پۆلی ١٢"
                       required="true" >
                         <div class="form-control-position">
                           <i class="ft-mail"></i>
@@ -69,7 +69,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                         <div class="help-block font-small-3"></div>
                       </fieldset>
                           <fieldset class="form-group position-relative has-icon-left">
-                            <input type="password" name="passcode" id="password" class="form-control input-lg"
+                            <input type="text" name="passcode" id="password" class="form-control input-lg"
                             placeholder="سڕیال کۆد" tabindex="5" required>
                             <div class="form-control-position">
                               <i class="la la-key"></i>
