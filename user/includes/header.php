@@ -25,13 +25,13 @@
          <ul class="nav navbar-nav float-right">
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="mr-1">Hello,
+                <span class="mr-1">
                   <?php
                 
-                $uid=$_SESSION['code'];
-                $ret=mysqli_query($con,"select name from student where code=$uid");
+                $uid=$_SESSION['uid'];
+                $ret=mysqli_query($con,"SELECT * FROM student_data where Code=$uid");
                 $row=mysqli_fetch_array($ret);
-                $name=$row['name'];
+                $name=$row['Name'];
 
 
 ?>

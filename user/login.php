@@ -50,10 +50,10 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
               <div class="card border-grey border-lighten-3 m-0">
                 <div class="card-header border-0 pb-0">
                   <div class="card-title text-center">
-              <h4 style="font-weight: bold"> Student's Login</h4>
+              <h4 style="font-weight: bold"> فۆرمی چوونەژوورەوەی قوتابی</h4>
                   </div>
                   <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
-                    <span>Login</span>
+                    <span>چوونەژوورەوە</span>
                   </h6>
                 </div>
                 <div class="card-content">
@@ -78,11 +78,9 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                           </fieldset> 
                       <div class="row">
                         <div class="col-6 col-sm-6 col-md-6">
-                          <button type="submit" name="login" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i> Login</button>
+                          <button type="submit" name="login" class="btn btn-info btn-lg btn-block"><i class="ft-user"></i> چوونەژوورەوە</button>
                         </div>
-                        <div class="col-6 col-sm-6 col-md-6">
-                          <a href="signup.php" class="btn btn-danger btn-lg btn-block"  type="text"><i class="ft-unlock"></i> Register</a>
-                        </div>
+                        
                       </div>
                        <div class="col-6 col-sm-6 col-md-6">
                       
