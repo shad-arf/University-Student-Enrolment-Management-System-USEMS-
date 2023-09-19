@@ -17,53 +17,48 @@ if (strlen($_SESSION['uid'] == 0)) {
     $userId = $_SESSION['uid'];
     $gender = $_POST['gender'];
     $facultyId = (int)$_POST['facultyId'];
-
     $departmentId = (int)$_POST['departmentId'];
-    $idCode =(int)$_POST['idCode'];
+    $idCode = (int)$_POST['idCode'];
     $kuLastName = $_POST['kuLastName'];
     $kuSecondName = $_POST['kuSecondName'];
     $kuFirstName = $_POST['kuFirstName'];
     $lastName = $_POST['lastName'];
     $firstName = $_POST['firstName'];
     $secondName = $_POST['secondName'];
-    $upic = $_FILES["image"]["name"];
+    $adminNote = ' '; // You can add more logic to set the adminNote value if needed
 
+    $userpic = md5($_FILES["image"]["name"]) . $extension;
 
-    $extension = substr($upic, strlen($upic) - 4, strlen($upic));
-    // allowed extensions
-    $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif","PNG","JPG","JPEG");
-    // Validation for allowed extensions .in_array() function searches an array for a specific value.
-    if (!in_array($extension, $allowed_extensions)) {
-      echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
-    } else {
-      // rename user pic
-      $userpic = md5($upic) . $extension;
-      move_uploaded_file($_FILES["image"]["tmp_name"], "userimages/" . $userpic);
-      var_dump($secondName);
-      $query = mysqli_query($con, "INSERT INTO `tbladmapplications`(`userId`, `gender`, `image`, `firstName`, `lastName`, `kuFirstName`, `kuLastName`, `idCode`, `facultyId`, `departmentId`, `kuSecondName`, `secondName`, `adminNote`) VALUES ('$userId','$gender','$userpic','$firstName','$lastName','$kuFirstName','$kuLastName','$idCode','$facultyId','$departmentId','$kuSecondName','$secondName',' ')");
+    $query = "INSERT INTO `tbladmapplications` (`userId`, `gender`, `image`, `firstName`, `lastName`, `kuFirstName`, `kuLastName`, `idCode`, `facultyId`, `departmentId`, `kuSecondName`, `secondName`, `adminNote`)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-      if ($query) {
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "ssssssiiissss", $userId, $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $adminNote);
 
+    if (mysqli_stmt_execute($stmt)) {
+        move_uploaded_file($_FILES["image"]["tmp_name"], "userimages/" . $userpic);
         echo '<script>alert("Data has been added successfully.")</script>';
         echo "<script>window.location.href ='addmission-form.php'</script>";
-      } else {
+    } else {
         echo '<script>alert("Something Went Wrong. Please try again.")</script>';
         echo "<script>window.location.href ='addmission-form.php'</script>";
-      }
     }
-  }
+
+    mysqli_stmt_close($stmt);
+}
+
 //adding first form
 
 
 
   //second submit for first form 
-	
-  if (isset($_POST['submit2'])) {
+	if (isset($_POST['submit2'])) {
+    // Validate and sanitize user inputs
+    $appId = (int)$_POST['appId'];
     $userId = $_SESSION['uid'];
     $gender = $_POST['gender'];
-    $facultyId = $_POST['facultyId'];
-    $departmentId = $_POST['departmrntId'];
-
+    $facultyId = (int)$_POST['facultyId'];
+    $departmentId = (int)$_POST['departmentId'];
     $idCode = $_POST['idCode'];
     $kuLastName = $_POST['kuLastName'];
     $kuSecondName = $_POST['kuSecondName'];
@@ -71,33 +66,47 @@ if (strlen($_SESSION['uid'] == 0)) {
     $lastName = $_POST['lastName'];
     $firstName = $_POST['firstName'];
     $secondName = $_POST['secondName'];
-    
-    $appId = (int)$_POST['appId'];
-    $upic = $_FILES["image"]["name"];
-    $extension = substr($upic, strlen($upic) - 4, strlen($upic));
-    // allowed extensions
-    $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif");
-    // Validation for allowed extensions .in_array() function searches an array for a specific value.
-    if (!in_array($extension, $allowed_extensions)) {
-      echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
-    } else {
-      // rename user pic
-      $userpic = md5($upic) . $extension;
-      move_uploaded_file($_FILES["image"]["tmp_name"], "userimages/" . $userpic);
-      $query=mysqli_query($con, "UPDATE `tbladmapplications` SET `gender`='$gender',`image`='$userpic',`firstName`='$firstName',`lastName`='$lastName',`kuFirstName`='$kuFirstName',`kuLastName`='$kuLastName',`idCode`='$idCode',`facultyId`='$facultyId',`departmentId`='$departmentId',`kuSecondName`='$kuSecondName',`secondName`='$secondName',`status`='pending' WHERE id='$appId'");
-      if ($query) {
-        echo "<script>alert('First Form Updated.');</script>";
-        echo "<script>window.location.href ='addmission-form.php'</script>";
-        
-        }else{
-           echo "<script>alert('Something Went Wrong. Please try again.');</script>";
-           echo "<script>window.location.href ='addmission-form.php'</script>";
-            }
-        
-      // $query=mysqli_query($con, "update tbladmapplications set status='pending',firstName=".$firstName.",secondName=".$secondName.",lastName=".$lastName.",kuFirstName=".$kuFirstName.",kuSecondName=".$kuSecondName.",kuLastName=".$kuLastName.",image=".$userpic.",idCode=".$idCode.",gender=".$gender.",facultyId=".$facultyId." WHERE id='$appId'");
+    $status = 'pending';
 
+    // File upload handling
+    $upic = $_FILES["image"]["name"];
+    $extension = pathinfo($upic, PATHINFO_EXTENSION);
+
+    // Allowed file extensions
+    $allowed_extensions = array("jpg", "jpeg", "png", "gif");
+
+    if (in_array(strtolower($extension), $allowed_extensions)) {
+        // Rename user pic with a unique name
+        $userpic = md5(uniqid()) . "." . $extension;
+
+        // Move uploaded file to the destination directory
+        $upload_directory = "userimages/";
+        move_uploaded_file($_FILES["image"]["tmp_name"], $upload_directory . $userpic);
+
+        // Update the database record using prepared statement
+        $query = "UPDATE `tbladmapplications` SET 
+            `gender`=?, `image`=?, `firstName`=?, `lastName`=?, `kuFirstName`=?,
+            `kuLastName`=?, `idCode`=?, `facultyId`=?, `departmentId`=?, `kuSecondName`=?,
+            `secondName`=?, `status`=? WHERE `id`=?";
+        
+        $stmt = mysqli_prepare($con, $query);
+        mysqli_stmt_bind_param($stmt, "ssssssiiissssi", $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $status, $appId);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('First Form Updated.');</script>";
+        } else {
+            echo "<script>alert('Something Went Wrong. Please try again.');</script>";
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
     }
-  }
+
+    // Redirect back to the form page
+    echo "<script>window.location.href ='addmission-form.php'</script>";
+}
+
   //second submit for first form 
 
 
@@ -237,7 +246,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                         <div class="row">
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>First ز </h5>
+                                <h5>First Name </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="firstName" name="firstName" value="<?php echo $row['firstName'] ?>" type="text" required>
                                 </div>

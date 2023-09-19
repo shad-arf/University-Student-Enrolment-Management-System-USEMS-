@@ -36,18 +36,15 @@ header('location:logout.php');
       </div>
       <div class="content-body">
         <!-- Revenue, Hit Rate & Deals -->
-                         <?php
-$uid=$_SESSION['uid'];
+   <?php 
+                $uid=$_SESSION['uid'];
+                $ret=mysqli_query($con,"SELECT Code FROM student_data where Code='$uid'");
+                $row=mysqli_fetch_array($ret);
+                $rtp =mysqli_query($con ,"SELECT status from tbladmapplications where userId='$uid'");
 
-$ret=mysqli_query($con,"select FirstName from tbluser where ID='$uid'");
-$row=mysqli_fetch_array($ret);
-$name=$row['FirstName'];
-$uid=$_SESSION['uid'];
-$rtp =mysqli_query($con ,"SELECT status from tbladmapplications where userId='$uid'");
-$row=mysqli_fetch_array($rtp);
-$adsts=$row['status'];
-if($row>0){
-
+                $row=mysqli_fetch_array($rtp);
+                $adsts=$row['status'];
+                if($row>0){
 ?>
 
         <div class="row" >
@@ -61,17 +58,16 @@ if($row>0){
 
 
 
-<?php if($adsts=="selected") {?>
-                      <h4 align="center">داواکارییەکەت وەرگیرە</h4>
+                  <?php if($adsts=="selected") {?>
+                      <h4 align="center">داواکارییەکەت وەرگیرا</h4>
                     <?php } ?>
 
                     <?php if($adsts=="rejected") {?>
                       <h4 align="center">داواکارییەکەت هەلوەشایەوە </h4>
                     <?php } ?>
-<?php if($adsts=="pending") {?>
+                  <?php if($adsts=="pending") {?>
                       <h4 align="center">داواکارییەکەت لە چاوەروانی دایە لەلایەن ئەدمینانی زانکۆی سۆران </h4>
                     <?php } ?>
-
                     </div>
                     <div>
          <i class="icon-file success font-large-2 float-right"></i>
@@ -85,7 +81,7 @@ if($row>0){
                           <?php if($adsts=="rejected") {?>
                     <div class="progress-bar bg-gradient-x-danger" role="progressbar" style="width: 100%"
                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
- <?php if($adsts=="selected") {?>
+                  <?php if($adsts=="selected") {?>
                     <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 100%"
                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> <?php } ?>
 
@@ -96,7 +92,8 @@ if($row>0){
             </div>
           </div>
         </div>
-<?php } else{?>
+<?php 
+}else{?>
      
         <div class="row" >
           <div class="col-xl-10 col-lg-6 col-12">
@@ -186,8 +183,6 @@ if($adsts=="selected"  )
                   <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
                         <div class="progress-bar bg-gradient-x-success" role="progressbar" style="width: 100%"
                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-
-
                   </div>
                 </div>
               </a>
