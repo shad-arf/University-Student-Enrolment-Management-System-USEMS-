@@ -1,0 +1,321 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e3ebf6;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+#main-header {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3a454b;
+  padding: 0 5%;
+}
+
+#logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+.menu-btn {
+  width: 3rem;
+  height: 3rem;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-around;
+  display: none;
+}
+
+.menu-btn span {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+#main-header ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#main-header li {
+  margin: 0 1rem;
+}
+
+#main-header nav a {
+  color: rgb(255, 225, 0);
+  font-size: 1.25rem;
+}
+
+#main-header nav a:hover {
+  color: rgb(255, 166, 0);
+}
+
+#side-drawer {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(29, 26, 27);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+#side-drawer:target {
+  display: block;
+}
+
+#side-drawer header {
+  height: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 5%;
+}
+
+#side-drawer ul {
+  list-style: none;
+  margin: 0;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#side-drawer li {
+  margin: 1rem 0;
+}
+
+#side-drawer a {
+  color: rgb(253, 239, 213);
+  font-size: 2rem;
+}
+
+.form {
+  margin: 9rem auto 0 auto;
+  width: 18%;
+  height: 35%;
+  padding: 4rem 3.125rem 4.5rem 3.125rem;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.form h2 {
+  font-size: x-large;
+  text-align: center;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: nowrap;
+}
+
+.form form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  
+  width: 85%;
+  margin: 0;
+}
+
+.form form input:focus {
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.btn {
+  background-color: rgb(10, 112, 149);
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+  letter-spacing: 3px;
+}
+
+.btn:hover {
+  background-color: rgb(17, 143, 228);
+}
+
+#footer {
+  margin-top: auto;
+  width: 100%;
+  height: fit-content;
+  background: black;
+  text-align: center;
+}
+
+#footer p {
+  color: white;
+}
+
+#footer p a {
+  color: #1e9ff2;
+}
+
+@media (max-width: 600px) {
+
+  #main-header nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+
+  .form {
+    margin: 6rem auto 0 auto;
+    width: 60%;
+    height: 35%;
+    padding: 4rem 3.125rem 4.5rem 3.125rem;
+  }
+
+  .form form input {
+    width: 100%;
+    margin: 0;
+  }
+
+  .btn {
+    padding: 0.5rem 1.5rem;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (min-width: 600px) {
+
+  #main-header nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+
+  .form {
+    margin: 6rem auto 0 auto;
+    width: 45%;
+  }
+
+  .form form input {
+    width: 70%;
+  }
+
+  .btn {
+    width: 45%;
+  }
+}
+@media (min-width: 768px) {
+  #main-header nav {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+
+  .form {
+    width: 34%;
+  }
+
+  .form form input {
+    width: 80%;
+  }
+
+  .btn {
+    width: 50%;
+  }
+}
+
+@media (min-width: 900px) {
+  .form {
+    width: 30%;
+  }
+
+  .form form input {
+    width: 80%;
+  }
+
+  .btn {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  #main-header nav {
+    display: block;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .form {
+    width: 30%;
+  }
+
+  .form form input {
+    width: 70%;
+    margin: 0;
+  }
+
+  .btn {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  #main-header nav {
+    display: block;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .form {
+    width: 20%;
+  }
+
+  .form form input {
+    width: 75%;
+  }
+
+  .btn {
+    width: 50%;
+  }
+}

@@ -18,25 +18,25 @@
       <nav>
         <ul>
           <li>
+            <a href="index.php">Home</a>
+          </li>
+          <li>
             <a
-              href="index.php"
+              href="help.php"
               style="border-bottom: 2px solid rgb(237, 234, 10)"
-              >سەرەکی</a
+              >Tutorial Registration</a
             >
           </li>
-          <li style="display: none">
-            <a href="help.php">فێرکاری خۆتۆمارکردن</a>
-          </li>
-          <li><a href="contact.php">پەیوەندیمان پێوەبکە</a></li>
+          <li><a href="contact.php">Contanct Us</a></li>
         </ul>
       </nav>
-      <a href="#side-drawer" class="menu-btn">
+   <a href="#side-drawer" class="menu-btn">
         <span></span>
         <span></span>
         <span></span>
       </a>
     </header>
-    <aside id="side-drawer">
+  <aside id="side-drawer">
       <header>
         <a href="#" class="menu-btn">
           <span></span>
@@ -47,42 +47,21 @@
       <nav>
         <ul>
           <li>
+            <a href="index.php">Home</a>
+          </li>
+          <li>
             <a
-              href="index.php"
+              href="help.php"
               style="border-bottom: 2px solid rgb(237, 234, 10)"
-              >سەرەکی</a
+              >Tutorial Registration</a
             >
           </li>
-          <li style="display: none">
-            <a href="help.php">فێرکاری خۆتۆمارکردن</a>
-          </li>
-          <li><a href="contact.php">پەیوەندیکردن</a></li>
+          <li><a href="contact.php">Contanct Us</a></li>
         </ul>
       </nav>
     </aside>
 
-    <main>
-      <div class="form">
-        <h2>فۆڕمی چوونەژوورەوەی قوتابی</h2>
-        <form action="login.inc.php" method="POST">
-          <input
-            type="number"
-            id="student_id"
-            name="code"
-            placeholder="کۆدی قوتابی"
-            required
-          />
-          <input
-            type="password"
-            name="passcode"
-            id="student_serial"
-            placeholder="سڕیال کۆدی قوتابی"
-            required
-          />
-          <button type="submit" name="login" class="btn">چوونەژوورەوە</button>
-        </form>
-      </div>
-    </main>
+    <main></main>
 
     <footer id="footer">
       <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a></p>
