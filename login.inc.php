@@ -35,6 +35,5 @@ if (isset($_POST['login'])) {
         die("Execution failed: " . mysqli_error($con));
     }
     
-    mysqli_close($con);
 }
 ?>

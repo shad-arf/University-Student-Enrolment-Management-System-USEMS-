@@ -216,7 +216,7 @@ if (strlen($_SESSION['uid'] == 0)) {
 
             <!-- first form when rejected-->
 
-            <form name="submitrejected" method="post" enctype="multipart/form-data">
+            <form name="submitrejected" accept-charset="UTF-8"  method="post" enctype="multipart/form-data">
               <section class="formatter" id="formatter">
                 <div class="row">
                   <div class="col-12">
@@ -392,7 +392,7 @@ if (strlen($_SESSION['uid'] == 0)) {
 
              <!-- first form -->
 
-            <form name="submit" method="post" enctype="multipart/form-data">
+            <form name="submit" accept-charset="UTF-8" method="post" enctype="multipart/form-data">
               <section class="formatter" id="formatter">
                 <div class="row">
                   <div class="col-12">
