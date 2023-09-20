@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL);
+error_reporting(0);
 include('includes/dbconnection.php');
 
 // require_once "includes/dbcon.php";
@@ -411,52 +411,45 @@ if (strlen($_SESSION['uid'] == 0)) {
                       <div class="card-content">
                         <div class="card-body">
 
-
-                        <div class="row">
+                          
+                          <div align="right" class="row">
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>First Name </h5>
-                                <div class="form-group">
-                                  <input class="form-control white_bg" id="firstName" name="firstName" type="text" required>
-                                </div>
-                              </fieldset>
-                            </div>
-                            <div class="col-xl-4 col-lg-12">
-                              <fieldset>
-                                <h5>Second Name </h5>
-                                <div class="form-group">
-                                  <input class="form-control white_bg" id="secondName" name="secondName" type="text" required>
-                                </div>
-                              </fieldset>
-                            </div>
-                            <div class="col-xl-4 col-lg-12">
-                              <fieldset>
-                                <h5>Last Name </h5>
+                                <h5>ناوی سێهەمت بە ئینگلیزی </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="lastName" name="lastName" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
+                            <div class="col-xl-4 col-lg-12">
+                            <fieldset>
+                              <h5>ناوی دووەمت بە ئینگلیزی  </h5>
+                              <div class="form-group">
+                                <input class="form-control white_bg" id="secondName" name="secondName" type="text" required>
+                              </div>
+                            </fieldset>
+                          </div>
+                          <div  class="col-xl-4 col-lg-12">
+                            <fieldset>
+                              <h5>ناوی یەکەمت بە ئینگلیزی </h5>
+                              <div class="form-group">
+                                <input class="form-control white_bg" id="firstName" name="firstName" type="text" required>
+                              </div>
+                            </fieldset>
+                          </div>
                           </div>
 
 
                           <div class="row" align="right">
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>ناوی یەکەم </h5>
+                                <h5>ناوی سیانیت بە کوردی </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="kuFirstName" name="kuFirstName" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
-                            <div class="col-xl-4 col-lg-12">
-                              <fieldset>
-                                <h5>ژمارەی موبایل </h5>
-                                <div class="form-group">
-                                  <input class="form-control white_bg" id="kuSecondName" name="kuSecondName" type="text" required>
-                                </div>
-                              </fieldset>
-                            </div>
+                           
                             <!-- <div class="col-xl-4 col-lg-12">
                               <fieldset>
                                 <h5>ناوی سێیەم </h5>
@@ -467,34 +460,43 @@ if (strlen($_SESSION['uid'] == 0)) {
                             </div> -->
                           
                           </div>
-                          <div class="row">
+                          <div class="row" align="right">
+                          <div  class="col-xl-4 col-lg-12">
+                              <fieldset>
+                                <h5>ژمارەی موبایل </h5>
+                                <div class="form-group">
+                                  <input class="form-control white_bg" id="kuSecondName" name="kuSecondName" type="text" required>
+                                </div>
+                              </fieldset>
+                            </div>
+                          </div>
+                          <div class="row" align="right">
                           <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>Gender </h5>
+                                <h5>ڕەگەز </h5>
                                 <div class="form-group">
 
                                   <select class="form-control white_bg" id="gender" name="gender" required>
                                     <option value="">Select</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
-                                    <option value="Transgender">Transgender</option>
                                   </select>
                                 </div>
                               </fieldset>
                             </div>
-                            <div class="col-xl-4 col-lg-12">
+                            <div  align="right" class="col-xl-4 col-lg-12">
                               <fieldset>
 
 
-                                <h5>Id Code </h5>
+                                <h5>ژمارەی نازنامە </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="idCode" name="idCode" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
-                            <div class="col-xl-4 col-lg-12">
+                            <div align="right" class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>Faculty </h5>
+                                <h5>فاکەلتی </h5>
                                 <div class="form-group">
                                   <select name='facultyId' id="facultyId" class="form-control white_bg" required="true">
                                     <?php $query = mysqli_query($con, "select * from tblfaculty");
@@ -506,7 +508,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 </div>
                               </fieldset>
                               <fieldset>
-                                <h5>Department </h5>
+                                <h5>بەش </h5>
                                 <div class="form-group">
                                   <select name='departmentId' id="facultyId" class="form-control white_bg" required="true">
                                     <?php $query = mysqli_query($con, "select * from tbldep");
@@ -526,9 +528,9 @@ if (strlen($_SESSION['uid'] == 0)) {
                           <div class="row">
                          
 
-                            <div class="col-xl-6 col-lg-12">
+                            <div align="right" class="col-xl-6 col-lg-12">
                               <fieldset>
-                                <h5>Image</h5>
+                                <h5>وێنەی خۆت </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="image" name="image" type="file" required>
                                 </div>
@@ -598,60 +600,60 @@ $row=$roww;
     <!-- <td><a class="btn btn-outline-primary" href="selected.php?aticid=<?php echo $row['id'];?>" target="_blank">Print</a></td> -->
   </tr>
   <tr>
-    <th>Student First Name</th>
+    <th> ناوی یەکەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['firstName'];?></td>
     </td>
 
   </tr>
   <tr>
-    <th>Student Second Name</th>
+    <th>ناوی دووەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['secondName'];?></td>
 
   </tr>
   <tr>
-    <th>Student Last Name</th>
+    <th>ناوی سێهەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['lastName'];?></td>
 
   </tr>
   <tr>
-    <th>Student Kurdish First Name</th>
+    <th>ناوی سیانی قوتابی بە کوردی</th>
     <td><?php  echo $row['kuFirstName'];?></td>
 
   </tr>
   <tr>
-    <th>Student Kurdish Second Name</th>
+    <th>ژمارەی موبایل</th>
     <td><?php  echo $row['kuSecondName'];?></td>
 
   </tr>
-  <tr>
+  <!-- <tr>
     <th>Student Kurdish Last Name</th>
     <td><?php  echo $row['kuLastName'];?></td>
 
-  </tr>
+  </tr> -->
   <tr>
-  <th>Student Pic</th>
+  <th>وێنەی قوتابی</th>
   <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
 
 </tr>
 
 <tr>
-    <th>Student Gender</th>
+    <th>ڕەگەز</th>
     <td><?php  echo $row['gender'];?></td>
 
   </tr>
   
   <tr>
-    <th>Student Id Code</th>
+    <th>ژماوەی ڕەگەزنامە</th>
     <td><?php  echo $row['idCode'];?></td>
 
   </tr>
   <tr>
-    <th>Student Faculty</th>
+    <th>فاکەلتی</th>
     <td><?php  echo $row['facultyName'];?></td>
 
   </tr>
   <tr>
-    <th>Student Department</th>
+    <th>بەش</th>
     <td><?php  echo $row['depName'];?></td>
 
                 </table>
