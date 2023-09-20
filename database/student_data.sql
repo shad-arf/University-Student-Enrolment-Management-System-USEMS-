@@ -28,22 +28,30 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbladmapplications`
 --
 
+DROP TABLE IF EXISTS `student_data`;
+CREATE TABLE IF NOT EXISTS `student_data` (
+    'id' int(11),
+    'Code' VARCHAR(20), -- You can adjust the length as needed to accommodate longer codes
+    'Name' VARCHAR(255), -- Adjust the length according to your data
+    'Passcode' VARCHAR(255) -- Adjust the length according to your data
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+
 DROP TABLE IF EXISTS `tbladmapplications`;
 CREATE TABLE IF NOT EXISTS `tbladmapplications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` char(20) NOT NULL,
-  `gender` varchar(200) DEFAULT NULL,
+  `userId` char(10) NOT NULL,
+  `gender` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(200) DEFAULT NULL,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `kuFirstName` varchar(255) NOT NULL,
-  `kuLastName` varchar(255) NOT NULL,
+  `firstName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kuFirstName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kuLastName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `idCode` varchar(200) NOT NULL,
-  `facultyId` int(255) NOT NULL,
-  `departmentId` int(255) NOT NULL,
-  `kuSecondName` varchar(255) NOT NULL,
-  `secondName` varchar(255) NOT NULL,
-  `phoneNumber` varchar(90),
+  `facultyId` int(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `departmentId` int(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kuSecondName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secondName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'pending',
   `adminNote` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)

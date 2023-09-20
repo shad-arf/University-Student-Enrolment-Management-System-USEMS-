@@ -82,7 +82,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
                   <th>First Name</th>
                   <th>Second Name</th>
-                  <th>Email</th>
                   <th>Id Code</th>
                   <th>Mobile</th>
                    <th>Action</th>
@@ -96,9 +95,9 @@ $row = mysqli_fetch_array($ret);
 $type = $row['type'];
 
 if ($type == 'super_admin') {
-    $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName, tbladmapplications.Email, tbladmapplications.idCod FROM tbladmapplications INNER JOIN student_data ON student_data.id = tbladmapplications.userId WHERE tbladmapplications.status = 'pending'");
+    $ret = mysqli_query($con, "SELECT *  FROM tbladmapplications ");
 } else {
-    $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName, tbladmapplications.Email, tbladmapplications.idCode, tbladmapplications.MobileNumber FROM tbladmapplications INNER JOIN student_data ON student_data.id = tbladmapplications.userId WHERE tbladmapplications.status = 'pending' AND tbladmapplications.facultyId = '$type'");
+    $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName,  tbladmapplications.idCode, tbladmapplications.MobileNumber FROM tbladmapplications INNER JOIN student_data ON student_data.id = tbladmapplications.userId WHERE tbladmapplications.status = 'pending' AND tbladmapplications.facultyId = '$type'");
 }
 
 $cnt = 1;
@@ -108,9 +107,8 @@ while ($row = mysqli_fetch_array($ret)) {
           <td><?php echo $cnt; ?></td>
           <td><?php echo $row['firstName']; ?></td>
           <td><?php echo $row['secondName']; ?></td>
-          <td><?php echo $row['Email']; ?></td>
-          <td><?php echo $row['idCode']; ?></td>
-          <td><a href="view-appform.php?aticid=<?php echo $row['apid']; ?>" target="_blank">View Details</a></td>
+          <td><?php echo $row['userId']; ?></td>
+          <td><a href="view-appform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
       </tr>
       <?php
       $cnt = $cnt + 1;
@@ -128,7 +126,6 @@ while ($row = mysqli_fetch_array($ret)) {
 
                   <th>Nationality</th>
                   <th>idCardNumber</th>
-                  <th>Email</th>
                   <th>Mobile</th>
                    <th>Action</th>
                 </tr>
@@ -151,10 +148,11 @@ while ($row=mysqli_fetch_array($ret)) {
                   <td><?php echo $cnt;?></td>
                   <td><?php  echo $row['nationality'];?></td>
                   <td><?php  echo $row['idCardNumber'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
                     <td><?php  echo $row['MobileNumber'];?></td>
 
                   <td><a href="view-secondappform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
+                  <td><?php  echo $row['status'];?></td>
+
                 </tr>
                 <?php 
 $cnt=$cnt+1;
