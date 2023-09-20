@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `tbladmapplications` (
   `departmentId` int(255) NOT NULL,
   `kuSecondName` varchar(255) NOT NULL,
   `secondName` varchar(255) NOT NULL,
+  `phoneNumber` varchar(90),
   `status` varchar(255) NOT NULL DEFAULT 'pending',
   `adminNote` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)

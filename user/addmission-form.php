@@ -1,8 +1,7 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
-include('includes/dbcon.php');
 
 // require_once "includes/dbcon.php";
 $appdata='';
@@ -19,7 +18,7 @@ if (strlen($_SESSION['uid'] == 0)) {
     $facultyId = (int)$_POST['facultyId'];
     $departmentId = (int)$_POST['departmentId'];
     $idCode = (int)$_POST['idCode'];
-    $kuLastName = $_POST['kuLastName'];
+    $kuLastName = 'null';
     $kuSecondName = $_POST['kuSecondName'];
     $kuFirstName = $_POST['kuFirstName'];
     $lastName = $_POST['lastName'];
@@ -60,7 +59,7 @@ if (strlen($_SESSION['uid'] == 0)) {
     $facultyId = (int)$_POST['facultyId'];
     $departmentId = (int)$_POST['departmentId'];
     $idCode = $_POST['idCode'];
-    $kuLastName = $_POST['kuLastName'];
+    $kuLastName ='null';
     $kuSecondName = $_POST['kuSecondName'];
     $kuFirstName = $_POST['kuFirstName'];
     $lastName = $_POST['lastName'];
@@ -274,7 +273,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                           <div class="row" align="right">
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>ناوی یەکەم </h5>
+                                <h5>ناوی سیانیت </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="kuFirstName" name="kuFirstName"  value="<?php echo $row['kuFirstName'] ?>" type="text" required>
                                 </div>
@@ -452,20 +451,20 @@ if (strlen($_SESSION['uid'] == 0)) {
                             </div>
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>ناوی دووەم </h5>
+                                <h5>ژمارەی موبایل </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="kuSecondName" name="kuSecondName" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
-                            <div class="col-xl-4 col-lg-12">
+                            <!-- <div class="col-xl-4 col-lg-12">
                               <fieldset>
                                 <h5>ناوی سێیەم </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="kuLastName" name="kuLastName" type="text" required>
                                 </div>
                               </fieldset>
-                            </div>
+                            </div> -->
                           
                           </div>
                           <div class="row">

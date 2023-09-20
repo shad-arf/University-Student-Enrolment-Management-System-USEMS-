@@ -26,6 +26,7 @@ if (isset($_POST['submit1'])) {
     $lastName = $_POST['lastName'];
     $firstName = $_POST['firstName'];
     $secondName = $_POST['secondName'];
+    $phoneNumber = $_POST['phoneNumber'];
     $upic = $_FILES["image"]["name"];
 
 
@@ -40,7 +41,7 @@ if (isset($_POST['submit1'])) {
       $userpic = md5($upic) . $extension;
       move_uploaded_file($_FILES["image"]["tmp_name"], "userimages/" . $userpic);
       var_dump($secondName);
-      $query = mysqli_query($con, "INSERT INTO `tbladmapplications`(`userId`, `gender`, `image`, `firstName`, `lastName`, `kuFirstName`, `kuLastName`, `idCode`, `facultyId`, `departmentId`, `kuSecondName`, `secondName`, `adminNote`) VALUES ('$userId','$gender','$userpic','$firstName','$lastName','$kuFirstName','$kuLastName','$idCode','$facultyId','$departmentId','$kuSecondName','$secondName',' ')");
+      $query = mysqli_query($con, "INSERT INTO `tbladmapplications`(`userId`, `gender`, `image`, `firstName`, `lastName`, `kuFirstName`, `kuLastName`, `idCode`, `facultyId`, `departmentId`, `kuSecondName`, `secondName`, `adminNote`,'phoneNumber') VALUES ('$userId','$gender','$userpic','$firstName','$lastName','$kuFirstName','$kuLastName','$idCode','$facultyId','$departmentId','$kuSecondName','$secondName',' ' ,'$phoneNumber')");
 
       if ($query) {
 

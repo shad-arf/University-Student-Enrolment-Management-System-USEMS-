@@ -1,6 +1,5 @@
 <?php  
 session_start();
-error_reporting(0);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['aid']==0)) {
   header('location:logout.php');
@@ -89,37 +88,33 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                    <th>Action</th>
                 </tr>
               </thead>
-  <?php
-   $admid=$_SESSION['aid'];
-   // get admin id from tbladmin where id is equal to session id
- $ret=mysqli_query($con,"select * from tbladmin where ID='$admid'");
- $row=mysqli_fetch_array($ret);
- $type = $row['type'];   
- if($type=='super_admin'){
-  $ret=mysqli_query($con,"select tbladmapplications.idCode,tbladmapplications.id as apid, tbladmapplications.firstName,tbladmapplications.secondName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId where tbladmapplications.status='pending'");
+              <?php
+$admid = $_SESSION['aid'];
+// Get admin id from tbladmin where id is equal to session id
+$ret = mysqli_query($con, "select * from tbladmin where ID='$admid'");
+$row = mysqli_fetch_array($ret);
+$type = $row['type'];
 
- }else{
-   $ret=mysqli_query($con,"select tbladmapplications.idCode,tbladmapplications.id as apid, tbladmapplications.firstName,tbladmapplications.secondName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId where tbladmapplications.status='pending' and tbladmapplications.facultyId='$type'");
+if ($type == 'super_admin') {
+    $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName, tbladmapplications.Email, tbladmapplications.idCod FROM tbladmapplications INNER JOIN student_data ON student_data.id = tbladmapplications.userId WHERE tbladmapplications.status = 'pending'");
+} else {
+    $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName, tbladmapplications.Email, tbladmapplications.idCode, tbladmapplications.MobileNumber FROM tbladmapplications INNER JOIN student_data ON student_data.id = tbladmapplications.userId WHERE tbladmapplications.status = 'pending' AND tbladmapplications.facultyId = '$type'");
+}
 
- }        
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-              
-                <tr>
-                  <td><?php echo $cnt;?></td>
-                  <td><?php  echo $row['firstName'];?></td>
-                  <td><?php  echo $row['secondName'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
-                    <td><?php  echo $row['idCode'];?></td>
-                    <td><?php  echo $row['MobileNumber'];?></td>
-
-                  <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
-                </tr>
-                <?php 
-$cnt=$cnt+1;
-}?>
+$cnt = 1;
+while ($row = mysqli_fetch_array($ret)) {
+  ?>
+      <tr>
+          <td><?php echo $cnt; ?></td>
+          <td><?php echo $row['firstName']; ?></td>
+          <td><?php echo $row['secondName']; ?></td>
+          <td><?php echo $row['Email']; ?></td>
+          <td><?php echo $row['idCode']; ?></td>
+          <td><a href="view-appform.php?aticid=<?php echo $row['apid']; ?>" target="_blank">View Details</a></td>
+      </tr>
+      <?php
+      $cnt = $cnt + 1;
+  } ?>
 
 
 </table>
@@ -141,10 +136,10 @@ $cnt=$cnt+1;
   <?php
    
    if($type =='super_admin'){
-     $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber,tbluser.MobileNumber,tbluser.Email from  tblsecondadmapplications inner join tbluser on tbluser.id=tblsecondadmapplications.userId where tblsecondadmapplications.status='pending'");
+     $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber from  tblsecondadmapplications inner join student_data on student_data.id=tblsecondadmapplications.userId where tblsecondadmapplications.status='pending'");
 
    }else{
-    $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber,tbluser.MobileNumber,tbluser.Email from  tblsecondadmapplications inner join tbluser on tbluser.id=tblsecondadmapplications.userId inner join tbladmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tblsecondadmapplications.status='pending' and tbladmapplications.facultyId='$type'");
+    $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber from  tblsecondadmapplications inner join student_data on student_data.id=tblsecondadmapplications.userId inner join tbladmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tblsecondadmapplications.status='pending' and tbladmapplications.facultyId='$type'");
 
    }           
 $cnt=1;
