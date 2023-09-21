@@ -1,146 +1,81 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
 
 include('includes/dbconnection.php');
 if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
   } else{
 
-  //second form
-  if (isset($_POST['submitSecond'])) {
-    $userId = $_SESSION['uid'];
-    $dob = $_POST['dob'];
-    $nationality = $_POST['nationality'];
-    $motherName = $_POST['motherName'];
-    $placeOfBreath = $_POST['placeOfBreath'];
-    $placeHeSheLive = $_POST['placeHeSheLive'];
-    $country = $_POST['country'];
-    $governate = $_POST['governate'];
-    $city = $_POST['city'];
-    $village = $_POST['village'];
-    $state = $_POST['state'];
-    $idCardNumber = $_POST['idCardNumber'];
-    $nationaltyNumber = $_POST['nationaltyNumber'];
-    $phoneNumberFirstPerson = $_POST['phoneNumberFirstPerson'];
-    $studentPlace = $_POST['studentPlace'];
-    $religion = $_POST['religion'];
 
-     $idCardFile = $_FILES["idCardFile"]["name"];
-     $nationaltyCardFile = $_FILES["nationaltyCardFile"]["name"];
-     $certificate12File = $_FILES["certificate12File"]["name"];
-     $bloodTestFile = $_FILES["bloodTestFile"]["name"];
-     $eyeTestFile = $_FILES["eyeTestFile"]["name"];
+    // Second form
+    if (isset($_POST['submitSecond'])) {
+        $userId = $_SESSION['uid'];
+        $dob = $_POST['dob'];
+        $nationality = $_POST['nationality'];
+        $motherName = $_POST['motherName'];
+        $placeOfBreath = $_POST['placeOfBreath'];
+        $placeHeSheLive = $_POST['placeHeSheLive'];
+        $country = $_POST['country'];
+        $governate = $_POST['governate'];
+        $city = $_POST['city'];
+        $village = $_POST['village'];
+        $state = $_POST['state'];
+        $idCardNumber = $_POST['idCardNumber'];
+        $nationaltyNumber = $_POST['nationaltyNumber'];
+        $phoneNumberFirstPerson = $_POST['phoneNumberFirstPerson'];
+        $studentPlace = $_POST['studentPlace'];
+        $religion = $_POST['religion'];
 
-     $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif");
+        // File Upload Security
+      $upload_dir = "userdocs/"; // Change this to your actual upload directory
 
-      //checkfor idcardfile extensions
-      $idCardFileExtension = substr($idCardFile, strlen($idCardFile) - 4, strlen($idCardFile));
-      // allowed extensions
-      // Validation for allowed extensions .in_array() function searches an array for a specific value.
-      if (!in_array($idCardFileExtension, $allowed_extensions)) {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for idCardFile');</script>";
-      } else {
-        
+        $idCardFile = $_FILES["idCardFile"]["name"];
+        $idCardFileExtension = strtolower(pathinfo($idCardFile, PATHINFO_EXTENSION));
 
-      }
+       
+            // Generate a unique filename
+            $idCardFileUpload = md5($idCardFile . time()) . "." . $idCardFileExtension;
+            $idCardFilePath = $upload_dir . $idCardFileUpload;
 
+            if (move_uploaded_file($_FILES["idCardFile"]["tmp_name"], $idCardFilePath)) {
+                // Create a prepared statement
+                $query = "INSERT INTO `tblsecondadmapplications` (`userId`, `dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`, `adminNote`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                
+                // Create a prepared statement
+                $stmt = mysqli_prepare($con, $query);
 
-      //checkfor idcardfile extensions
-      $idCardFileExtension = substr($idCardFile, strlen($idCardFile) - 4, strlen($idCardFile));
-      // allowed extensions
-      // Validation for allowed extensions .in_array() function searches an array for a specific value.
-      if (!in_array($idCardFileExtension, $allowed_extensions)) {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for idCardFile');</script>";
-      } else {
+                if ($stmt) {
+                    // Bind the parameters to the prepared statement
+                    mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssss", $userId, $dob, $nationality, $motherName, $placeOfBreath, $placeHeSheLive, $country, $governate, $city, $village, $state, $idCardNumber, $nationaltyNumber, $phoneNumberFirstPerson, $studentPlace, $religion, $idCardFileUpload, $nationaltyCardFileUpload, $certificate12FileUpload, $bloodTestFileUpload, $eyeTestFileUpload, $adminNote);
 
-      //checkfor nationaltyCardFile extensions
-      $nationaltyCardFileExtension = substr($nationaltyCardFile, strlen($nationaltyCardFile) - 4, strlen($nationaltyCardFile));
-      // allowed extensions
-      // Validation for allowed extensions .in_array() function searches an array for a specific value.
-      if (!in_array($nationaltyCardFileExtension, $allowed_extensions)) {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for nationaltyCardFile');</script>";
-      } else {
+                    // Execute the prepared statement
+                    $result = mysqli_stmt_execute($stmt);
 
-      //checkfor certificate12File extensions
-      $certificate12FileExtension = substr($certificate12File, strlen($certificate12File) - 4, strlen($certificate12File));
-      // allowed extensions
-      // Validation for allowed extensions .in_array() function searches an array for a specific value.
-      if (!in_array($certificate12FileExtension, $allowed_extensions)) {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for certificate12File');</script>";
-      } else {
-        
-      //checkfor bloodTestFile extensions
-      $bloodTestFileExtension = substr($bloodTestFile, strlen($bloodTestFile) - 4, strlen($bloodTestFile));
-      // allowed extensions
-      // Validation for allowed extensions .in_array() function searches an array for a specific value.
-      if (!in_array($bloodTestFileExtension, $allowed_extensions)) {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for bloodTestFile');</script>";
-      } else {
-      //checkfor eyeTestFile extensions
-      $eyeTestFileExtension = substr($eyeTestFile, strlen($eyeTestFile) - 4, strlen($eyeTestFile));
-      // allowed extensions
-      // Validation for allowed extensions .in_array() function searches an array for a specific value.
-      if (!in_array($eyeTestFileExtension, $allowed_extensions)) {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for eyeTestFile');</script>";
-      } else {
-        //in here you can insert data and upload files
-        $idCardFileUpload = md5($idCardFile) . $idCardFileExtension;
-        move_uploaded_file($_FILES["idCardFile"]["tmp_name"], "userdocs/" . $idCardFileUpload);
-        $nationaltyCardFileUpload = md5($nationaltyCardFile) . $nationaltyCardFileExtension;
-        move_uploaded_file($_FILES["nationaltyCardFile"]["tmp_name"], "userdocs/" . $nationaltyCardFileUpload);
-        $certificate12FileUpload = md5($certificate12File) . $certificate12FileExtension;
-        move_uploaded_file($_FILES["certificate12File"]["tmp_name"], "userdocs/" . $certificate12FileUpload);
-        $bloodTestFileUpload = md5($bloodTestFile) . $bloodTestFileExtension;
-        move_uploaded_file($_FILES["bloodTestFile"]["tmp_name"], "userdocs/" . $bloodTestFileUpload);
-        $eyeTestFileUpload = md5($eyeTestFile) . $eyeTestFileExtension;
-        move_uploaded_file($_FILES["eyeTestFile"]["tmp_name"], "userdocs/" . $eyeTestFileUpload);
+                    if ($result) {
+                        echo '<script>alert("Data has been added successfully.")</script>';
+                        echo "<script>window.location.href ='upload-doc.php'</script>";
+                    } else {
+                        echo '<script>alert("Something Went Wrong. Please try again.")</script>';
+                        echo "<script>window.location.href ='upload-doc.php'</script>";
+                    }
 
-        $sql = "INSERT INTO `tblsecondadmapplications` (`userId`, `dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`, `adminNote`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        // Create a prepared statement
-        $stmt = mysqli_prepare($con, $sql);
+                    // Close the prepared statement
+                    mysqli_stmt_close($stmt);
+                } else {
+                    // Handle any error in preparing the statement
+                    echo '<script>alert("SQL Statement preparation failed.")</script>';
+                    echo "<script>window.location.href ='upload-doc.php'</script>";
+                }
 
-        if ($stmt) {
-            // Bind the parameters to the prepared statement
-            mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssss", $userId, $dob, $nationality, $motherName, $placeOfBreath, $placeHeSheLive, $country, $governate, $city, $village, $state, $idCardNumber, $nationaltyNumber, $phoneNumberFirstPerson, $studentPlace, $religion, $idCardFileUpload, $nationaltyCardFileUpload, $certificate12FileUpload, $bloodTestFileUpload, $eyeTestFileUpload, '');
-
-            // Execute the prepared statement
-            $result = mysqli_stmt_execute($stmt);
-
-            if ($result) {
-                echo '<script>alert("Data has been added successfully.")</script>';
-                echo "<script>window.location.href ='upload-doc.php'</script>";
+                // Close the database connection
+                mysqli_close($con);
             } else {
-                echo '<script>alert("Something Went Wrong. Please try again.")</script>';
-                echo "<script>window.location.href ='upload-doc.php'</script>";
+                echo '<script>alert("Failed to upload idCardFile.")</script>';
             }
-
-            // Close the prepared statement
-            mysqli_stmt_close($stmt);
-        } else {
-            // Handle any error in preparing the statement
-            echo '<script>alert("SQL Statement preparation failed.")</script>';
-            echo "<script>window.location.href ='upload-doc.php'</script>";
         }
-
-        // Close the database connection
-        mysqli_close($con);
-
-
-      }
-
-      }
-
-
-      }
-
-      }
-
-      }
-
     
-  }
+
   //second form
 
   //second form when rejected
