@@ -8,8 +8,8 @@ if (strlen($_SESSION['aid']==0)) {
   } else{
 
 
+    die($_SESSION['aid']);
     ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,8 +83,9 @@ if (strlen($_SESSION['aid']==0)) {
 <body>
 
 <?php
-$sid=$_GET['udid'];
-$ret=mysqli_query($con,"select * from tbluser where ID='$sid'");
+$sid=$_GET['uid'];
+
+$ret=mysqli_query($con,"select * from student_data where Code='$sid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -93,7 +94,7 @@ while ($row=mysqli_fetch_array($ret)) {
 <?php
 
 // get user details FROM tbl admapplications table where userid is equal to sid
-$userid = $row['ID'];
+$userid = $row['Code'];
 $ret2=mysqli_query($con,"select * from tbladmapplications where UserId='$userid'");
 $cnt=1;
 while ($row2=mysqli_fetch_array($ret2)) {
@@ -108,7 +109,7 @@ while ($row2=mysqli_fetch_array($ret2)) {
     <div class="ac-card-info">
       <p>
          <span style="font-weight: 500;" id="name">Name : <?php  echo $row['FirstName'];?> &nbsp; <?php  echo $row['LastName'];?></span><br>
-         <span id="studentNumber">Phone :<?php  echo $row['MobileNumber'];?></span>
+         <span id="studentNumber">Phone :<?php  echo $row['kuSecondName'];?></span>
          <br>
 
          <?php 

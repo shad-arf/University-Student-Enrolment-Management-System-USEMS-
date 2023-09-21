@@ -128,10 +128,10 @@ while ($row = mysqli_fetch_array($ret)) {
                 <tr>
                 <th> </th>
 
-                  <th>Nationality</th>
-                  <th>idCardNumber</th>
-                  <th>Mobile</th>
-                   <th>Action</th>
+                <th>idCardNumber</th>
+                <th>Mobile</th>
+                <th>Id Code</th>
+                <th>Action</th>
                 </tr>
               </thead>
   <?php
@@ -150,12 +150,12 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
+                  <td><?php  echo $row['city'];?></td>
+                  <td><?php  echo $row['state'];?></td>
                   <td><?php  echo $row['userId'];?></td>
-                  <td><?php  echo $row['idCardNumber'];?></td>
-                    <td><?php  echo $row['MobileNumber'];?></td>
-
-                  <td><a href="view-secondappform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
                   <td><?php  echo $row['status'];?></td>
+
+                  <td><a href="view-secondappform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
 
                 </tr>
                 <?php 

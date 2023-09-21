@@ -96,7 +96,6 @@ if (strlen($_SESSION['uid']==0)) {
         $eyeTestFileUpload = md5($eyeTestFile) . $eyeTestFileExtension;
         move_uploaded_file($_FILES["eyeTestFile"]["tmp_name"], "userdocs/" . $eyeTestFileUpload);
 
-
         $query = mysqli_query($con, "INSERT INTO `tblsecondadmapplications`(`userId`,`dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`, `adminNote`) VALUES ('$userId','$dob','$nationality','$motherName','$placeOfBreath','$placeHeSheLive','$country','$governate','$city','$village','$state','$idCardNumber','$nationaltyNumber','$phoneNumberFirstPerson','$studentPlace','$religion','$idCardFileUpload','$nationaltyCardFileUpload','$certificate12FileUpload','$bloodTestFileUpload','$eyeTestFileUpload',' ')");
         if ($query) {
 

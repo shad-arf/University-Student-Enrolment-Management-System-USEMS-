@@ -12,7 +12,7 @@ include('includes/dbconnection.php');
       $cid=$_GET['aticid'];
       $adminNote=$_POST['adminNote'];
       var_dump($adminNote);
-      $query=mysqli_query($con, "update tblsecondadmapplications set status='rejected',adminNote='$adminNote' where id='$cid'");
+      $query=mysqli_query($con, "UPDATE tblsecondadmapplications set status='rejected',adminNote='$adminNote' where userId='$cid'");
         if ($query) {
           echo '<script>alert("you are rejected that Application .")</script>';
           echo "<script>window.location.href ='dashboard.php'</script>";
@@ -32,7 +32,7 @@ $cid=$_GET['aticid'];
 // $admsta=$_POST['status'];
 // $toemail=$_POST['useremail'];
 
-$query=mysqli_query($con, "update  tblsecondadmapplications set status='selected' where id='$cid'");
+$query=mysqli_query($con, "UPDATE  tblsecondadmapplications set status='selected' where userId='$cid'");
 if ($query) {
 
 
@@ -127,7 +127,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  
 <?php
 $cid=$_GET['aticid'];
-$ret=mysqli_query($con,"select * from tblsecondadmapplications where tblsecondadmapplications.id='$cid'");
+$ret=mysqli_query($con,"SELECT * from tblsecondadmapplications where userId='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
