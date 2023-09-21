@@ -55,11 +55,14 @@ header('location:logout.php');
                 <div class="card-body">
                   <div class="media d-flex">
                     <div class="media-body text-left">
+                  
 
 
-
-                  <?php if($adsts=="selected") {?>
+                  <?php 
+                  echo ($row['adminNote']);
+                  if($adsts=="selected") {?>
                       <h4 align="center">داواکارییەکەت وەرگیرا</h4>
+                      
                     <?php } ?>
 
                     <?php if($adsts=="rejected") {?>
