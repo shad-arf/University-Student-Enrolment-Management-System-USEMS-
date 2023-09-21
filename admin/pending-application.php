@@ -99,7 +99,7 @@ $type = $row['type'];
 if ($type == 'super_admin') {
     $ret = mysqli_query($con, "SELECT *  FROM tbladmapplications ");
 } else {
-    $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName,  tbladmapplications.idCode, tbladmapplications.MobileNumber FROM tbladmapplications INNER JOIN student_data ON student_data.id = tbladmapplications.userId WHERE tbladmapplications.status = 'pending' AND tbladmapplications.facultyId = '$type'");
+    $ret = mysqli_query($con, "SELECT* FROM tbladmapplications ");
 }
 
 $cnt = 1;
@@ -137,10 +137,10 @@ while ($row = mysqli_fetch_array($ret)) {
   <?php
    
    if($type =='super_admin'){
-     $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber from  tblsecondadmapplications inner join student_data on student_data.id=tblsecondadmapplications.userId where tblsecondadmapplications.status='pending'");
+     $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications ");
 
    }else{
-    $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber from  tblsecondadmapplications inner join student_data on student_data.id=tblsecondadmapplications.userId inner join tbladmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tblsecondadmapplications.status='pending' and tbladmapplications.facultyId='$type'");
+    $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications ");
 
    }           
 $cnt=1;
