@@ -8,9 +8,9 @@ if (strlen($_SESSION['aid']==0)) {
 if(isset($_POST['submit']))
   {
     $sid=$_GET['udid'];
-    $fname=$_POST['firstname'];
-    $lname=$_POST['lastname'];
-    $query=mysqli_query($con, "update tbluser set FirstName='$fname', LastName='$lname' where ID='$sid'");
+    $fname=$_POST['Name'];
+    $code=$_POST['Passcode'];
+    $query=mysqli_query($con, "update student_data set Name='$fname', Passcode='$code' where Code='$sid'");
     if ($query) {
 
     echo '<script>alert("User profile has been updated")</script>';
@@ -92,7 +92,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <form name="submit" method="post" enctype="multipart/form-data"> 
 <?php
 $sid=$_GET['udid'];
-$ret=mysqli_query($con,"select * from tbluser where ID='$sid'");
+$ret=mysqli_query($con,"select * from student_data where Code='$sid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -121,9 +121,9 @@ while ($row=mysqli_fetch_array($ret)) {
 
 <div class="col-xl-6 col-lg-12">
  <fieldset>
-  <h5>First Name                   </h5>
+  <h5>Student Name                   </h5>
    <div class="form-group">
-   <input class="form-control white_bg" id="firstname" name="firstname" value="<?php  echo $row['FirstName'];?>" type="text" required>
+   <input class="form-control white_bg" id="firstname" name="Name" value="<?php  echo $row['Name'];?>" type="text" required>
     </div>
 </fieldset>
                    
@@ -132,10 +132,10 @@ while ($row=mysqli_fetch_array($ret)) {
 
 <div class="col-xl-6 col-lg-12">
  <fieldset>
-  <h5>Last Name                 </h5>
+  <h5>Sirial Code             </h5>
    <div class="form-group">
 
-   <input class="form-control white_bg" id="lastname" name="lastname" value="<?php  echo $row['LastName'];?>"  type="text" required>
+   <input class="form-control white_bg" id="lastname" name="Passcode" value="<?php  echo $row['Passcode'];?>"  type="text" required>
                           </div>
                         </fieldset>
                       </div>
@@ -143,23 +143,15 @@ while ($row=mysqli_fetch_array($ret)) {
 
 <div class="row">
 
-<div class="col-xl-6 col-lg-12">
- <fieldset>
-  <h5>Contact Number                   </h5>
-   <div class="form-group">
-   <input class="form-control white_bg" id="contactno" name="contactno" value="<?php  echo $row['MobileNumber'];?>" type="text" maxlength='10' required readonly='true'>
-    </div>
-</fieldset>
-                   
-</div>
+
 
 
 <div class="col-xl-6 col-lg-12">
  <fieldset>
-  <h5>Email                </h5>
+  <h5>Student ID                </h5>
    <div class="form-group">
 
-   <input class="form-control white_bg" id="email" name="email"  type="email" value="<?php  echo $row['Email'];?>" required readonly='true'>
+   <input class="form-control white_bg" id="email" name="Code"  type="text" value="<?php  echo $row['Code'];?>" required>
                           </div>
                         </fieldset>
                       </div>

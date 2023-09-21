@@ -128,12 +128,13 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  
 <?php
 $cid=$_GET['aticid'];
-$ret=mysqli_query($con,"SELECT tbladmapplications.*, tblfaculty.name AS facultyName, tbldep.name AS depName, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email
-FROM tbladmapplications
-INNER JOIN tbluser ON tbluser.id = tbladmapplications.userId
-INNER JOIN tblfaculty ON tbladmapplications.facultyId = tblfaculty.id
-INNER JOIN tbldep ON tbladmapplications.departmentId = tbldep.id
-WHERE tbladmapplications.id = '$cid';");
+$ret=mysqli_query($con,"SELECT * FROM tbladmapplications");
+// $ret=mysqli_query($con,"SELECT tbladmapplications.*, tblfaculty.name AS facultyName, tbldep.name AS depName, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email
+// FROM tbladmapplications
+// INNER JOIN tbluser ON tbluser.id = tbladmapplications.userId
+// INNER JOIN tblfaculty ON tbladmapplications.facultyId = tblfaculty.id
+// INNER JOIN tbldep ON tbladmapplications.departmentId = tbldep.id
+// WHERE tbladmapplications.id = '$cid';");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -156,11 +157,7 @@ while ($row=mysqli_fetch_array($ret)) {
     <td><?php  echo $row['secondName'];?></td>
 
   </tr>
-  <tr>
-    <th>Student Last Name</th>
-    <td><?php  echo $row['lastName'];?></td>
-
-  </tr>
+ 
   <tr>
     <th>Student Kurdish First Name</th>
     <td><?php  echo $row['kuFirstName'];?></td>

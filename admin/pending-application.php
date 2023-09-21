@@ -82,9 +82,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
                   <th>First Name</th>
                   <th>Second Name</th>
+                  <th>Third Name</th>
                   <th>Id Code</th>
-                  <th>Mobile</th>
                    <th>Action</th>
+                  <th>More</th>
+
                 </tr>
               </thead>
               <?php
@@ -107,7 +109,9 @@ while ($row = mysqli_fetch_array($ret)) {
           <td><?php echo $cnt; ?></td>
           <td><?php echo $row['firstName']; ?></td>
           <td><?php echo $row['secondName']; ?></td>
+          <td><?php echo $row['lastName']; ?></td>
           <td><?php echo $row['userId']; ?></td>
+          <td><?php echo $row['status']; ?></td>
           <td><a href="view-appform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
       </tr>
       <?php

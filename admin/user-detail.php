@@ -9,10 +9,10 @@ if (strlen($_SESSION['aid']==0)) {
     if(isset($_GET['delid']))
   {
     $uid=$_GET['delid'];
-    $query=mysqli_query($con,"delete tbluser,tbldocument,tbladmapplications from tbluser
-left join tbladmapplications on tbladmapplications.UserId=tbluser.ID
-left join tbldocument on tbldocument.UserID=tbluser.ID
-where tbluser.ID='$uid'");
+    $query=mysqli_query($con,"delete student_data,tbldocument,tbladmapplications from student_data
+left join tbladmapplications on tbladmapplications.UserId=student_data.Code
+left join tbldocument on tbldocument.UserID=student_data.Code
+where student_data.Code='$uid'");
     echo "<script>alert('Record Deleted successfully');</script>";
     echo "<script>window.location.href='user-detail.php'</script>";
   }
@@ -87,35 +87,30 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <table class="table mb-0">
  <thead>
                 <tr>
-                  <th>S.NO</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Mobile Number</th>
-                  <th>Email</th>
-              
+                  <th>Student Name</th>
+                  <th>Student Code</th>
+                  <th>Student Serial Code</th>
+               
                    <th>Action</th>
                 </tr>
               </thead>
                <?php
-$ret=mysqli_query($con,"select * from tbluser");
+$ret=mysqli_query($con,"select * from student_data");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>
               
                 <tr>
-                  <td><?php echo $cnt;?></td>
-              
-                  <td><?php  echo $row['FirstName'];?></td>
-                  <td><?php  echo $row['LastName'];?></td>
-                  <td><?php  echo $row['MobileNumber'];?></td>
-                  <td><?php  echo $row['Email'];?></td>
+                  <td><?php  echo $row['Name'];?></td>
+                  <td><?php  echo $row['Code'];?></td>
+                  <td><?php  echo $row['Passcode'];?></td>
                   
                 
                   <td>
 
-                    <a href="edit-userdetail.php?udid=<?php echo $row['ID'];?>" title="Edit user details"><i class="la la-edit"></i></a>
-                      <a href="user-detail.php?delid=<?php echo $row['ID'];?>" onclick="return confirm('All details related to this user will be deleted.(E.g Application form , document and profile)');" style="color:red"><i class="la la-trash"></i></a>
+                    <a href="edit-userdetail.php?udid=<?php echo $row['Code'];?>" title="Edit user details"><i class="la la-edit"></i></a>
+                      <a href="user-detail.php?delid=<?php echo $row['Code'];?>" onclick="return confirm('All details related to this user will be deleted.(E.g Application form , document and profile)');" style="color:red"><i class="la la-trash"></i></a>
                   </td>
                     </tr>
                 <?php 
