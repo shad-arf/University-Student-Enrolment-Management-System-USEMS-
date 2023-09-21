@@ -96,15 +96,36 @@ if (strlen($_SESSION['uid']==0)) {
         $eyeTestFileUpload = md5($eyeTestFile) . $eyeTestFileExtension;
         move_uploaded_file($_FILES["eyeTestFile"]["tmp_name"], "userdocs/" . $eyeTestFileUpload);
 
-        $query = mysqli_query($con, "INSERT INTO `tblsecondadmapplications`(`userId`,`dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`, `adminNote`) VALUES ('$userId','$dob','$nationality','$motherName','$placeOfBreath','$placeHeSheLive','$country','$governate','$city','$village','$state','$idCardNumber','$nationaltyNumber','$phoneNumberFirstPerson','$studentPlace','$religion','$idCardFileUpload','$nationaltyCardFileUpload','$certificate12FileUpload','$bloodTestFileUpload','$eyeTestFileUpload',' ')");
-        if ($query) {
+        $sql = "INSERT INTO `tblsecondadmapplications` (`userId`, `dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`, `adminNote`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        // Create a prepared statement
+        $stmt = mysqli_prepare($con, $sql);
 
-          echo '<script>alert("Data has been added successfully.")</script>';
-          echo "<script>window.location.href ='upload-doc.php'</script>";
+        if ($stmt) {
+            // Bind the parameters to the prepared statement
+            mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssss", $userId, $dob, $nationality, $motherName, $placeOfBreath, $placeHeSheLive, $country, $governate, $city, $village, $state, $idCardNumber, $nationaltyNumber, $phoneNumberFirstPerson, $studentPlace, $religion, $idCardFileUpload, $nationaltyCardFileUpload, $certificate12FileUpload, $bloodTestFileUpload, $eyeTestFileUpload, '');
+
+            // Execute the prepared statement
+            $result = mysqli_stmt_execute($stmt);
+
+            if ($result) {
+                echo '<script>alert("Data has been added successfully.")</script>';
+                echo "<script>window.location.href ='upload-doc.php'</script>";
+            } else {
+                echo '<script>alert("Something Went Wrong. Please try again.")</script>';
+                echo "<script>window.location.href ='upload-doc.php'</script>";
+            }
+
+            // Close the prepared statement
+            mysqli_stmt_close($stmt);
         } else {
-          echo '<script>alert("Something Went Wrong. Please try again.")</script>';
-          echo "<script>window.location.href ='upload-doc.php'</script>";
+            // Handle any error in preparing the statement
+            echo '<script>alert("SQL Statement preparation failed.")</script>';
+            echo "<script>window.location.href ='upload-doc.php'</script>";
         }
+
+        // Close the database connection
+        mysqli_close($con);
 
 
       }
@@ -211,16 +232,35 @@ if (strlen($_SESSION['uid']==0)) {
         $eyeTestFileUpload = md5($eyeTestFile) . $eyeTestFileExtension;
         move_uploaded_file($_FILES["eyeTestFile"]["tmp_name"], "userdocs/" . $eyeTestFileUpload);
 
-        $query = mysqli_query($con, "UPDATE `tblsecondadmapplications` SET `dob`='$dob',`nationality`='$nationality',`motherName`='$motherName',`placeOfBreath`='$placeOfBreath',`placeHeSheLive`='$placeHeSheLive',`country`='$country',`governate`='$governate',`city`='$city',`village`='$village',`state`='$state',`idCardNumber`='$idCardNumber',`nationaltyNumber`='$nationaltyNumber',`phoneNumberFirstPerson`='$phoneNumberFirstPerson',`studentPlace`='$studentPlace',`religion`='$religion',`idCardFile`='$idCardFileUpload',`nationaltyCardFile`='$nationaltyCardFileUpload',`certificate12File`='$certificate12FileUpload',`bloodTestFile`='$bloodTestFileUpload',`eyeTestFile`='$eyeTestFileUpload',`status`='pending' WHERE userId='$userId'");
+        $sql = "UPDATE `tblsecondadmapplications` SET `dob`=?, `nationality`=?, `motherName`=?, `placeOfBreath`=?, `placeHeSheLive`=?, `country`=?, `governate`=?, `city`=?, `village`=?, `state`=?, `idCardNumber`=?, `nationaltyNumber`=?, `phoneNumberFirstPerson`=?, `studentPlace`=?, `religion`=?, `idCardFile`=?, `nationaltyCardFile`=?, `certificate12File`=?, `bloodTestFile`=?, `eyeTestFile`=?, `status`='pending' WHERE `userId`=?";
 
-        if ($query) {
+        // Create a prepared statement
+        $stmt = mysqli_prepare($con, $sql);
 
-          echo '<script>alert("Data has been added successfully.")</script>';
-          echo "<script>window.location.href ='upload-doc.php'</script>";
+        if ($stmt) {
+            // Bind the parameters to the prepared statement
+            mysqli_stmt_bind_param($stmt, "ssssssssssssssssssssss", $dob, $nationality, $motherName, $placeOfBreath, $placeHeSheLive, $country, $governate, $city, $village, $state, $idCardNumber, $nationaltyNumber, $phoneNumberFirstPerson, $studentPlace, $religion, $idCardFileUpload, $nationaltyCardFileUpload, $certificate12FileUpload, $bloodTestFileUpload, $eyeTestFileUpload, $userId);
+
+            // Execute the prepared statement
+            $result = mysqli_stmt_execute($stmt);
+
+            if ($result) {
+                echo '<script>alert("Data has been updated successfully.")</script>';
+                echo "<script>window.location.href ='upload-doc.php'</script>";
+            } else {
+                echo '<script>alert("Something Went Wrong. Please try again.")</script>';
+                echo "<script>window.location.href ='upload-doc.php'</script>";
+            }
+
+            // Close the prepared statement
+            mysqli_stmt_close($stmt);
         } else {
-          echo '<script>alert("Something Went Wrong. Please try again.")</script>';
-          echo "<script>window.location.href ='upload-doc.php'</script>";
+            // Handle any error in preparing the statement
+            echo '<script>alert("SQL Statement preparation failed.")</script>';
+            echo "<script>window.location.href ='upload-doc.php'</script>";
         }
+
+   
 
 
       }
