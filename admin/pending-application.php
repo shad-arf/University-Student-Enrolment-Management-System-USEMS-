@@ -150,7 +150,7 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
-                  <td><?php  echo $row['nationality'];?></td>
+                  <td><?php  echo $row['userId'];?></td>
                   <td><?php  echo $row['idCardNumber'];?></td>
                     <td><?php  echo $row['MobileNumber'];?></td>
 

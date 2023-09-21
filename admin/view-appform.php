@@ -13,10 +13,11 @@ include('includes/dbconnection.php');
 
       $adminNote=$_POST['adminNote'];
 
-        $query=mysqli_query($con, "update tbladmapplications set status='rejected',adminNote='$adminNote' where id='$cid'");
+        $query=mysqli_query($con, "UPDATE tbladmapplications set status='rejected',adminNote='$adminNote' where userId='$cid'");
         if ($query) {
           echo '<script>alert("you are rejected that Application .")</script>';
-          echo "<script>window.location.href ='dashboard.php'</script>";
+          echo "<script>window.location.href ='pending-application.php'</script>";
+
         }else{
 
         }
@@ -32,7 +33,7 @@ $cid=$_GET['aticid'];
 // $admsta=$_POST['status'];
 // $toemail=$_POST['useremail'];
 
-$query=mysqli_query($con, "update  tbladmapplications set status='selected' where id='$cid'");
+$query=mysqli_query($con, "UPDATE  tbladmapplications set status='selected' where userId='$cid'");
 if ($query) {
 
 
@@ -128,7 +129,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  
 <?php
 $cid=$_GET['aticid'];
-$ret=mysqli_query($con,"SELECT * FROM tbladmapplications");
+$ret=mysqli_query($con,"SELECT * FROM tbladmapplications WHERE userId=$cid");
 // $ret=mysqli_query($con,"SELECT tbladmapplications.*, tblfaculty.name AS facultyName, tbldep.name AS depName, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email
 // FROM tbladmapplications
 // INNER JOIN tbluser ON tbluser.id = tbladmapplications.userId
@@ -210,7 +211,7 @@ while ($row=mysqli_fetch_array($ret)) {
   </tr>
   <?php }?>
   
-  <?php if( $row['status'] == 'pending'){?>
+  
   <tr align="center">
     <td colspan="3">
       <button type="submit" name="rejected" value='rejected' class="btn btn-danger">Rejected</button>
@@ -219,7 +220,6 @@ while ($row=mysqli_fetch_array($ret)) {
     </td>
 
   </tr>
-  <?php }?>
 
 </form>
 </table>
