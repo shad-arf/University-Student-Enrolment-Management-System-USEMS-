@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
     if (strlen($_SESSION['uid']==0)) {
   header('location:logout.php');
@@ -72,14 +72,17 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  
 <?php
 $cid=$_GET['aticid'];
-$ret=mysqli_query($con,"select tbladmapplications.*,tblfaculty.*,tbluser.*,tblsecondadmapplications.* from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId  inner join tblfaculty on tbladmapplications.facultyId=tblfaculty.id inner join tblsecondadmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tbladmapplications.id='$cid'");
+$id=$_SESSION['uid'];
+$ret=mysqli_query($con,"SELECT *
+FROM tbladmapplications AS a
+INNER JOIN tblsecondadmapplications AS b ON a.userId = b.userId WHERE a.userId=$id;
+");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 // var_dump($row);
 ?>
-<!-- <div align="right"> </div>
+<div align="right"> </div>
 <div align="right"> <?php echo $row['firstName'].' '.$row['secondName'].' '.$row['lastName']  ?>  ناوی قوتابی  </div>
-<div align="right">ناوی قوتابی: <?php echo $row['kuFirstName'].' '.$row['kuSecondName'].' '.$row['kuLastName']  ?>    </div>
 <div align="right"> <?php echo $row['motherName']  ?>  ناوی دایک  </div>
 
 <div align="right"> ژمارەی ناسنامەی قوتابی  <?php echo $row['idCardNumber']  ?></div>
@@ -90,14 +93,14 @@ while ($row=mysqli_fetch_array($ret)) {
 <div align="right"> <?php echo $row['dob']  ?>   بەرواری لەدایک بوون </div>
 <div align="right"> <?php echo $row['nationality']  ?>     نەتەوە </div>
 <div align="right"> <?php echo $row['religion']  ?>     ئاین </div>
-<div align="right"> <?php echo $row['MobileNumber']  ?>     ژ تەلەفون </div>
+<div align="right"> <?php echo $row['phoneNumber']  ?>     ژ تەلەفون </div>
 <div align="right"> <?php echo $row['phoneNumberFirstPerson']  ?>     ژ تەلەفونی کەسی نزیک </div>
 <div align="right"> <?php echo $row['placeHeSheLive']  ?>   شوێنی نیشتەجێ بوون </div>
 <div align="right"> <?php echo $row['country']  ?>   وڵات   </div>
 <div align="right"> <?php echo $row['governate']  ?>   پارێزگا   </div>
 <div align="right"> <?php echo $row['village']  ?>   گوند   </div>
 <div align="right"> <?php echo $row['state']  ?>   گەڕەک   </div>
-<div align="right"> <?php echo $row['nationaltyNumber']  ?>   ژ ڕەگەزنامەی ئێراقی   </div> -->
+<div align="right"> <?php echo $row['nationaltyNumber']  ?>   ژ ڕەگەزنامەی ئێراقی   </div> 
 <pre align="right">
   ناو و نازناوی قوتابی : <?php echo $row['kuFirstName'].' '.$row['kuSecondName'].' '.$row['kuLastName']  ?>
 
@@ -113,7 +116,7 @@ while ($row=mysqli_fetch_array($ret)) {
   شوێن و مێژوی لەدایک بوون  <?php echo $row['dob'].' / '.$row['placeOfBreath']  ?>     جۆری خوێن  
   
   
-  نەتەوە  <?php echo $row['nationality']  ?>    ئایین  <?php echo $row['religion']  ?>  ژ.تەلەفون  <?php echo $row['MobileNumber']  ?>   ژ.ت نزیکترین کەس  <?php echo $row['phoneNumberFirstPerson']  ?>
+  نەتەوە  <?php echo $row['nationality']  ?>    ئایین  <?php echo $row['religion']  ?>  ژ.تەلەفون  <?php echo $row['phoneNumberFirstPerson']  ?>   ژ.ت نزیکترین کەس  <?php echo $row['phoneNumberFirstPerson']  ?>
 
 
    شوێنی نیشتەجێ بوون <?php echo $row['placeHeSheLive']  ?>  پارێزگا  <?php echo $row['governate']  ?>      گەڕەک  <?php echo $row['state']  ?>    گوند <?php echo $row['village']  ?>    ژ.خانوو 
@@ -125,7 +128,7 @@ while ($row=mysqli_fetch_array($ret)) {
    ژ.کارتی نیشتمانی     
 
 </pre>
-<!-- 
+
 <pre align="right">
   ناو و نازناوی قوتابی : کاوان
   ژمارەی نازنامەی قوتابی                ڕەگەز   نێر

@@ -2,7 +2,6 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-error_reporting(0);
 if (strlen($_SESSION['aid']==0)) {
   header('location:logout.php');
   } else{
@@ -84,7 +83,7 @@ if (strlen($_SESSION['aid']==0)) {
 
 <?php
 $sid=$_GET['udid'];
-$ret=mysqli_query($con,"select * from tbluser where ID='$sid'");
+$ret=mysqli_query($con,"SELECT * from student_data where Code='$sid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -92,9 +91,8 @@ while ($row=mysqli_fetch_array($ret)) {
 
 <?php
 
-// get user details FROM tbl admapplications table where userid is equal to sid
-$userid = $row['ID'];
-$ret2=mysqli_query($con,"select * from tbladmapplications where UserId='$userid'");
+
+$ret2=mysqli_query($con,"SELECT * from tbladmapplications where userId='$sid'");
 $cnt=1;
 while ($row2=mysqli_fetch_array($ret2)) {
 
@@ -107,8 +105,8 @@ while ($row2=mysqli_fetch_array($ret2)) {
 
     <div class="ac-card-info">
       <p>
-         <span style="font-weight: 500;" id="name">Name : <?php  echo $row['FirstName'];?> &nbsp; <?php  echo $row['LastName'];?></span><br>
-         <span id="studentNumber">Phone :<?php  echo $row['MobileNumber'];?></span>
+         <span style="font-weight: 500;" id="name">Name : <?php  echo $row['firstName'];?> &nbsp; <?php  echo $row['lastName'];?></span><br>
+         <span id="studentNumber">Phone :<?php  echo $row['phoneNumber'];?></span>
          <br>
 
          <?php 
