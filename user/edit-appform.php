@@ -217,7 +217,6 @@ while ($row=mysqli_fetch_array($ret)) {
     <option value="<?php echo $row['Gender'];?>"><?php echo $row['Gender'];?></option>
 <option value="Male">Male</option>
 <option value="Female">Female</option>
-<option value="Transgender">Transgender</option>
    </select>
                           </div>
                         </fieldset>

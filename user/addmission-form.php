@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
 include('includes/dbconnection.php');
 
 // require_once "includes/dbcon.php";
@@ -279,23 +279,25 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 </div>
                               </fieldset>
                             </div>
-                            <div class="col-xl-4 col-lg-12">
+                            <br>
+                            <div  class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>ناوی دووەم </h5>
+                                <h5> ژمارەی موبایل </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="kuSecondName" name="kuSecondName" value="<?php echo $row['kuSecondName'] ?>" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
+                            <!--
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
                                 <h5>ناوی سێیەم </h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="kuLastName" name="kuLastName" value="<?php echo $row['kuLastName'] ?>" type="text" required>
+                                  <input class="form-control white_bg" id="kuLastName" name="kuLastName" value="<?php //echo $row['kuLastName'] ?>" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
-                          
+              -->
                           </div>
                           <div class="row">
                           <div class="col-xl-4 col-lg-12">
@@ -625,11 +627,7 @@ $row=$roww;
     <td><?php  echo $row['kuSecondName'];?></td>
 
   </tr>
-  <!-- <tr>
-    <th>Student Kurdish Last Name</th>
-    <td><?php  echo $row['kuLastName'];?></td>
-
-  </tr> -->
+  
   <tr>
   <th>وێنەی قوتابی</th>
   <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
