@@ -248,8 +248,7 @@ if (strlen($_SESSION['uid']==0)) {
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
 
-  <title>College Addmission Management System|| Upload Documents</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  <title>فۆرمی ناردنی بەلگەنامەکان</title>
   <?php include('../include/links.php');?>
    <style>
     .errorWrap {
@@ -278,18 +277,18 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   <div class="app-content content">
     <div class="content-wrapper">
       <div class="content-header row">
-        <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+        <div style="text-align:right" class="content-header-right col-md-12 col-12 mb-2 breadcrumb-new">
           <h3 class="content-header-title mb-0 d-inline-block">
-           Upload Documents
+           ناردنی بەلگەنامەکان
           </h3>
           <div class="row breadcrumbs-top d-inline-block">
             <div class="breadcrumb-wrapper col-12">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a>
+                <li class="breadcrumb-item"><a href="dashboard.php">سەرەکی</a>
                 </li>
             
                 </li>
-                <li class="breadcrumb-item active">Documents
+                <li class="breadcrumb-item active">بەلگەنامەکان
                 </li>
                 
               </ol>
@@ -327,7 +326,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Addimission Second Form</h4>
+          <h4 class="card-title">فۆرمی بەلگەنامەکان</h4>
 
           <div class="heading-elements">
             <ul class="list-inline mb-0">
@@ -345,7 +344,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
           <div class="row">
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Date Of Breath</h5>
+                  <h5>بەرواری لە دایکبوون </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="dob" name="dob" type="text" required>
                   </div>
@@ -353,7 +352,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>nationality </h5>
+                  <h5>رەگەزنامە </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="nationality" name="nationality" type="text" required>
                   </div>
@@ -361,7 +360,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>motherName </h5>
+                  <h5>ناوی دایک </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="motherName" name="motherName" type="text" required>
                   </div>
@@ -373,7 +372,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div class="row" align="left">
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>place Of Breath</h5>
+                  <h5>شوێنی ژیان</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="placeOfBreath" name="placeOfBreath" type="text" required>
                   </div>
@@ -381,7 +380,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>place He/She Live </h5>
+                  <h5>شوێنی مانەوە </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="placeHeSheLive" name="placeHeSheLive" type="text" required>
                   </div>
@@ -389,7 +388,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>country</h5>
+                  <h5>ولات</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="country" name="country" type="text" required>
                   </div>
@@ -402,7 +401,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div class="row" align="left">
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Governate</h5>
+                  <h5>پارێزگا</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="governate" name="governate" type="text" required>
                   </div>
@@ -410,7 +409,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>City </h5>
+                  <h5>شار </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="city" name="city" type="text" required>
                   </div>
@@ -418,7 +417,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Village</h5>
+                  <h5>گوند یان گەڕەک</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="village" name="village" type="text" required>
                   </div>
@@ -431,7 +430,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div class="row" align="left">
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>State</h5>
+                  <h5>ناوچە</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="state" name="state" type="text" required>
                   </div>
@@ -439,7 +438,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Id Card Number </h5>
+                  <h5>ژمارەی ناسنامە </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="idCardNumber" name="idCardNumber" type="number" required>
                   </div>
@@ -447,7 +446,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Nationalty Number</h5>
+                  <h5>ژمارەی کارتی نیشتمانی یان رەگەزنامەی عێراقی</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="nationaltyNumber" name="nationaltyNumber" type="number" required>
                   </div>
@@ -459,7 +458,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div class="row" align="left">
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>phone Number First Person</h5>
+                  <h5>ژمارەی تەلەفۆنی کەسی یەکەم</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="phoneNumberFirstPerson" name="phoneNumberFirstPerson" type="number" required>
                   </div>
@@ -467,7 +466,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Religion </h5>
+                  <h5>ئایین </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="religion" name="religion" type="text" required>
                   </div>
@@ -475,9 +474,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-4 col-lg-12">
                 <fieldset>
-                  <h5>Student Place</h5>
+                  <h5>شوێنی مانەوە</h5>
                   <div class="form-group">
-                    <input class="form-control white_bg" id="studentPlace" name="studentPlace" placeholder="dormitory or home" type="text" required>
+                    <input class="form-control white_bg" id="studentPlace" name="studentPlace" placeholder="بەشەناو خۆیی یان مالەوە" type="text" required>
                   </div>
                 </fieldset>
               </div>
@@ -487,7 +486,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div class="row">
               <div class="col-xl-6 col-lg-12">
                 <fieldset>
-                  <h5>ID Card File</h5>
+                  <h5>ناسنامە</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="idCardFile"  name="idCardFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf"  required>
                   </div>
@@ -495,7 +494,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-6 col-lg-12">
                 <fieldset>
-                  <h5>Nationalty Card File</h5>
+                  <h5>کارتی نیشتمانی یان رەگەزنامەی عێراقی</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="nationaltyCardFile"  name="nationaltyCardFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
                   </div>
@@ -507,7 +506,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
               <div class="col-xl-6 col-lg-12">
                 <fieldset>
-                  <h5>Certificate 12 File</h5>
+                  <h5>بڕوانامەی پۆلی ١٢ </h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="certificate12File"  name="certificate12File"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf"  required>
                   </div>
@@ -515,7 +514,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
               </div>
               <div class="col-xl-6 col-lg-12">
                 <fieldset>
-                  <h5>Eye Test File</h5>
+                  <h5>پشکنینی چاو</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="eyeTestFile"  name="eyeTestFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
                   </div>
@@ -527,7 +526,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
             <div class="row">
               <div class="col-xl-6 col-lg-12">
                 <fieldset>
-                  <h5>Blood Test File</h5>
+                  <h5>پشکنینی خوێن</h5>
                   <div class="form-group">
                     <input class="form-control white_bg" id="bloodTestFile"  name="bloodTestFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
                   </div>
@@ -539,7 +538,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
           
             <div class="row" style="margin-top: 2%">
               <div class="col-xl-6 col-lg-12">
-                <button type="submit" name="submitSecond" class="btn btn-info btn-min-width mr-1 mb-1">Submit Second Application</button>
+                <button type="submit" name="submitSecond" class="btn btn-info btn-min-width mr-1 mb-1">ناردن</button>
               </div>
             </div>
 
@@ -562,7 +561,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                     while ($row = mysqli_fetch_array($query)) {
                       if($row['status']=='pending'){
                         ?>
- <p style="font-size:16px; color:red" align="center">Your Second Addmission Form already submitted.</p> 
+ <p style="font-size:16px; color:red" align="center">فۆرمی بەلگەنامەکان نێردرا.</p> 
  
  <br>
  <?php
@@ -581,15 +580,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                       // if status is selected
                       if($row['status']=='selected'){
                         ?> 
-                        <p style="font-size:16px; color:green" align="center">Your Second Addmission Form is Selected.</p>
-                        <a class="btn btn-outline-primary" href="selected.php?aticid=<?php echo $row['id'];?>" target="_blank">Print Information</a>
+                        <p style="font-size:16px; color:green" align="center">فۆرمی بەلگەنامەکانت پەسەندکرا</p>
+                        <a class="btn btn-outline-primary" href="selected.php?aticid=<?php echo $row['id'];?>" target="_blank">چاپکردن</a>
                         <a class="btn btn-outline-primary" href="badge.php?udid=<?php echo $stuid;?>" title="Edit user details">Print Your Badge</a>
 
                         <?php 
                       }else{
                         // if status is pending
                         ?>
-                        <p style="font-size:16px; color:red" align="center">Your Second Addmission Form is Submited and on  Review.</p>
+                        <p style="font-size:16px; color:red" align="center">فۆرمی بەلگەنامەکانت لە چاوەروانی دایە</p>
                         <?php 
                       }
                       ?>
@@ -598,109 +597,114 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                         
                         
                         <!-- <p style="font-size:16px; color:green" align="center">Your Second Addmission Form is Selected.</p> -->
-                        <table border="1" class="table table-bordered mg-b-0">
+                        <table border="1" style="text-align: right;" class="table table-bordered mg-b-0 col-xl-4 col-lg-12 ">
                           <tr>
-                    <th>Course Applied (Second Form)</th>
+                    <th>فۆرمی بەلگەنامەکان</th>
                     <td></td>
                   </tr>
                   <tr>
-                    <th>Date Of Breath</th>
                     <td><?php  echo $row['dob'];?></td>
+                    <th>بەرواری لەدایکبوون </th>
                   </td>
                   
                 </tr>
                 <tr>
-                  <th>Nationality</th>
                   <td><?php  echo $row['nationality'];?></td>
+                  <th>ڕەگەزنامە </th>
                   
                 </tr>
                 <tr>
-                  <th>Mother Name</th>
-                    <td><?php  echo $row['motherName'];?></td>
+                  <td><?php  echo $row['motherName'];?></td>
+                  <th>ناوی دایک</th>
                     
                   </tr>
                   <tr>
-                    <th>place Of Breath</th>
                     <td><?php  echo $row['placeOfBreath'];?></td>
+                    <th>شوێنی لەدایک بوون</th>
 
                   </tr>
                   <tr>
-                    <th>Place He/She Live</th>
                     <td><?php  echo $row['placeHeSheLive'];?></td>
+                    <th>شوێنی مانەوە</th>
 
                   </tr>
                   <tr>
-                    <th>Country</th>
                     <td><?php  echo $row['country'];?></td>
+                    <th>ولات</th>
 
                   </tr>
                   <tr>
-                  <th>Governate</th>
-                  <td><?php  echo $row['governate'];?></td>
+                    <td><?php  echo $row['governate'];?></td>
+                  <th>پارێزگا</th>
 
                   </tr>
 
                   <tr>
-                    <th>City</th>
                     <td><?php  echo $row['city'];?></td>
+                    <th>شار</th>
 
                   </tr>
 
                   <tr>
-                    <th>Village</th>
                     <td><?php  echo $row['village'];?></td>
+                    <th>گوند ، گەرەک</th>
 
                   </tr>
                   <tr>
-                    <th>State</th>
                     <td><?php  echo $row['state'];?></td>
+                    <th>ناوچە</th>
 
                   </tr>
 
                   <tr>
-                    <th>id Card Number</th>
                     <td><?php  echo $row['idCardNumber'];?></td>
+                    <th>ژمارەی ناسنامە </th>
 
                   </tr>
                   <tr>
-                    <th>nationalty Number</th>
                     <td><?php  echo $row['nationaltyNumber'];?></td>
+                    <th>ژمارەی کارتی نیشتمانی یان رەگەزنامە </th>
 
                   </tr>
                   <tr>
-                    <th>phone Number First Person</th>
                     <td><?php  echo $row['phoneNumberFirstPerson'];?></td>
+                    <th>ژمارەی تەلەفۆنی کەسی یەکەمت </th>
 
                   </tr>
                   <tr>
-                    <th>Student Place</th>
                     <td><?php  echo $row['studentPlace'];?></td>
+                    <th>شوێن </th>
 
                   </tr>
                   <tr>
-                    <th>religion</th>
                     <td><?php  echo $row['religion'];?></td>
+                    <th>ئایین</th>
 
                   </tr>
                   <tr>
-                    <th>Id card File</th>
+    <tr>
+               
+               <td colspan="2"><hr></td>
+           </tr>
+                  <tr>
                     <td><img src="../user/userdocs/<?php echo $row['idCardFile'];?>" width="200" height="150"></td>
+                    <th>ناسنامە </th>
                   </tr>
                   <tr>
-                    <th>Nationalty Card File</th>
                     <td><img src="../user/userdocs/<?php echo $row['nationaltyCardFile'];?>" width="200" height="150"></td>
+                    <th>کارتی نیشتمانی یان رەگەزنامەی عێراقی</th>
                   </tr>
                   <tr>
-                    <th>Certificate 12 File</th>
                     <td><img src="../user/userdocs/<?php echo $row['certificate12File'];?>" width="200" height="150"></td>
+                    <th>بڕوانامەی پۆلی ١٢</th>
                   </tr>
                   <tr>
-                    <th>Blood Test File</th>
                     <td><img src="../user/userdocs/<?php echo $row['bloodTestFile'];?>" width="200" height="150"></td>
+                    <th>پشکنینی خوێن</th>
                   </tr>
                   <tr>
-                    <th>Eye Test File</th>
                     <td><img src="../user/userdocs/<?php echo $row['eyeTestFile'];?>" width="200" height="150"></td>
+                    <th>پشکنینی چاو</th>
                   </tr>
                 </table>
                 
@@ -719,7 +723,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                         <div class="col-12">
                           <div class="card">
                             <div class="card-header">
-                              <h4 class="card-title">Addimission Second Form</h4>
+                              <h4 class="card-title">فۆرمی بەلگەنامەکان</h4>
 
                               <div class="heading-elements">
                                 <ul class="list-inline mb-0">
@@ -733,7 +737,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                             <div class="card-content">
                               <div class="card-body">
                               <div class="row">
-                              <p style="font-size:16px; color:red" align="">Admin Note : <?php echo $row['adminNote'] ?></p>
+                              <p style="font-size:16px; color:red" align="">تێبینی ئەدمین : <?php echo $row['adminNote'] ?></p>
 
                               </div>
 
@@ -741,7 +745,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                               <div class="row">
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Date Of Breath</h5>
+                                      <h5>بەرواری لەدایکبوون</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="dob" name="dob" value="<?php  echo $row['dob'];?>" type="text" required>
                                       </div>
@@ -749,7 +753,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>nationality </h5>
+                                      <h5>ڕەگەزنامە </h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="nationality" value="<?php  echo $row['nationality'];?>" name="nationality" type="text" required>
                                       </div>
@@ -757,7 +761,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>motherName </h5>
+                                      <h5>ناوی دایک </h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="motherName" value="<?php  echo $row['motherName'];?>" name="motherName" type="text" required>
                                       </div>
@@ -769,7 +773,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                 <div class="row" align="left">
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>place Of Breath</h5>
+                                      <h5>شوێنی لەدایکبوون</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['placeOfBreath'];?>" id="placeOfBreath" name="placeOfBreath" type="text" required>
                                       </div>
@@ -777,7 +781,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>place He/She Live </h5>
+                                      <h5>شوێنی مانەوە</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['placeHeSheLive'];?>" id="placeHeSheLive" name="placeHeSheLive" type="text" required>
                                       </div>
@@ -785,7 +789,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>country</h5>
+                                      <h5>ولات</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['country'];?>" id="country" name="country" type="text" required>
                                       </div>
@@ -798,7 +802,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                 <div class="row" align="left">
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Governate</h5>
+                                      <h5>پارێزگا</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['governate'];?>" id="governate" name="governate" type="text" required>
                                       </div>
@@ -806,7 +810,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>City </h5>
+                                      <h5>شار </h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['city'];?>" id="city" name="city" type="text" required>
                                       </div>
@@ -814,7 +818,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Village</h5>
+                                      <h5>گوند یان گەرەک</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['village'];?>" id="village" name="village" type="text" required>
                                       </div>
@@ -827,7 +831,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                 <div class="row" align="left">
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>State</h5>
+                                      <h5>ناوچە</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['state'];?>"  id="state" name="state" type="text" required>
                                       </div>
@@ -835,7 +839,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Id Card Number </h5>
+                                      <h5>ژمارەی ناسنامە </h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['idCardNumber'];?>" id="idCardNumber" name="idCardNumber" type="number" required>
                                       </div>
@@ -843,7 +847,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Nationalty Number</h5>
+                                      <h5> ژمارەی کارتی نیشتمانی یان رەگەزنامەی عێراقی</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['nationaltyNumber'];?>"  id="nationaltyNumber" name="nationaltyNumber" type="number" required>
                                       </div>
@@ -855,7 +859,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                 <div class="row" align="left">
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>phone Number First Person</h5>
+                                      <h5>ژمارەی موبایلی کەسی یەکەمت</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['phoneNumberFirstPerson'];?>" id="phoneNumberFirstPerson" name="phoneNumberFirstPerson" type="number" required>
                                       </div>
@@ -863,7 +867,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Religion </h5>
+                                      <h5>ئایین </h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" value="<?php  echo $row['religion'];?>"  id="religion" name="religion" type="text" required>
                                       </div>
@@ -871,9 +875,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-4 col-lg-12">
                                     <fieldset>
-                                      <h5>Student Place</h5>
+                                      <h5>شوێنی مانەوە</h5>
                                       <div class="form-group">
-                                        <input class="form-control white_bg" value="<?php  echo $row['studentPlace'];?>"  id="studentPlace" name="studentPlace" placeholder="dormitory or home" type="text" required>
+                                        <input class="form-control white_bg" value="<?php  echo $row['studentPlace'];?>"  id="studentPlace" name="studentPlace" placeholder="بەشەناو خۆیی یاخود مالەوە" type="text" required>
                                       </div>
                                     </fieldset>
                                   </div>
@@ -883,7 +887,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                 <div class="row">
                                   <div class="col-xl-6 col-lg-12">
                                     <fieldset>
-                                      <h5>ID Card File</h5>
+                                      <h5>ناسنامە</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="idCardFile"  name="idCardFile"  type="file"  required>
                                       </div>
@@ -891,7 +895,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-6 col-lg-12">
                                     <fieldset>
-                                      <h5>Nationalty Card File</h5>
+                                      <h5>کارتی نیشتمانی یان رەگەزنامەی عێراقی</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="nationaltyCardFile"  name="nationaltyCardFile"  type="file"  required>
                                       </div>
@@ -903,7 +907,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
                                   <div class="col-xl-6 col-lg-12">
                                     <fieldset>
-                                      <h5>Certificate 12 File</h5>
+                                      <h5>بڕوانامەی پۆلی ١٢</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="certificate12File"  name="certificate12File"  type="file"  required>
                                       </div>
@@ -911,7 +915,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                   </div>
                                   <div class="col-xl-6 col-lg-12">
                                     <fieldset>
-                                      <h5>Eye Test File</h5>
+                                      <h5>پشکنینی چاو</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="eyeTestFile"  name="eyeTestFile"  type="file"  required>
                                       </div>
@@ -923,7 +927,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                 <div class="row">
                                   <div class="col-xl-6 col-lg-12">
                                     <fieldset>
-                                      <h5>Blood Test File</h5>
+                                      <h5>پشکنینی خوێن</h5>
                                       <div class="form-group">
                                         <input class="form-control white_bg" id="bloodTestFile"  name="bloodTestFile"  type="file"  required>
                                       </div>
@@ -935,7 +939,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                               
                                 <div class="row" style="margin-top: 2%">
                                   <div class="col-xl-6 col-lg-12">
-                                    <button type="submit" name="submitsecondreject" class="btn btn-info btn-min-width mr-1 mb-1">Submit Second Application</button>
+                                    <button type="submit" name="submitsecondreject" class="btn btn-info btn-min-width mr-1 mb-1">ناردن</button>
                                   </div>
                                 </div>
 
@@ -955,9 +959,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 }
 
                   }
-                }else{?>
-                  <h4 align="center" style='color:blue'>تکایە چاوەڕوان بە، داواکارییەکەت لە چاوەروانی دایە لەلایەن ئەدمینانی زانکۆی سۆران پێداچوونەوەی بۆ دەکرێت</h4>
-                  <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                }else{
+                  ?>
+                   <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
                   <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 100%"
                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

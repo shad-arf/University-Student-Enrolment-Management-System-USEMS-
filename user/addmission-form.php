@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL);
+error_reporting(0);
 include('includes/dbconnection.php');
 
 // require_once "includes/dbcon.php";
@@ -41,10 +41,10 @@ if (strlen($_SESSION['uid'] == 0)) {
 
     if (mysqli_stmt_execute($stmt)) {
         move_uploaded_file($_FILES["image"]["tmp_name"], "userimages/" . $userpic);
-        echo '<script>alert("Data has been added successfully.")</script>';
+        echo '<script>alert("زانیارییەکە زیادکرا بە سەرکەوتووی")</script>';
         echo "<script>window.location.href ='addmission-form.php'</script>";
     } else {
-        echo '<script>alert("Something Went Wrong. Please try again.")</script>';
+        echo '<script>alert("شتێکی هەلە ڕوویدا دووبارە هەولبدە .")</script>';
         echo "<script>window.location.href ='addmission-form.php'</script>";
     }
 
@@ -92,14 +92,14 @@ if (strlen($_SESSION['uid'] == 0)) {
         mysqli_stmt_bind_param($stmt, "ssssssssssssi", $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $status, $appId);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "<script>alert('First Form Updated.');</script>";
+            echo "<script>alert('فۆرمی ناردنت نوێبۆوە');</script>";
         } else {
-            echo "<script>alert('Something Went Wrong. Please try again.');</script>";
+            echo "<script>alert('شتێکی هەلە ڕوویدا دووبارە هەولبدە ');</script>";
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed');</script>";
+        echo "<script>alert('فایلی وێنەکەت هەیە، فایلی وێنەکەت پێویستە ئەو فۆرماتانە بێت jpg / jpeg/ png /gif/pdf');</script>";
     }
 
     // Redirect back to the form page
@@ -116,7 +116,7 @@ if (strlen($_SESSION['uid'] == 0)) {
 
   <head>
 
-    <title>College Addmission Management System|| Addmission Form</title>
+    <title> فۆرمی وەرگرتنی قوتابیان</title>
     <?php include('../include/links.php');?>
   
  <style>
@@ -144,12 +144,12 @@ if (strlen($_SESSION['uid'] == 0)) {
     <?php include('includes/header.php'); ?>
     <?php include('includes/leftbar.php'); ?>
     
-    <div class="app-content content">
+    <div  style="text-align: right; " class="app-content content">
       <div class="content-wrapper">
-        <div class="content-header row">
-          <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
+        <div  class=" content-header row">
+          <div class="content-header-left col-md-12 col-12 mb-12 breadcrumb-new">
             <h3 class="content-header-title mb-0 d-inline-block">
-              Admission Application Form
+              فۆڕمی پێشکەشکردنی داواکاری 
             </h3>
             <?php
           $stuid = $_SESSION['uid'];
@@ -165,14 +165,14 @@ if (strlen($_SESSION['uid'] == 0)) {
             }
               ?>
 
-            <div class="row breadcrumbs-top d-inline-block">
+            <div  class="row breadcrumbs-top d-inline-block">
               <div class="breadcrumb-wrapper col-12">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a>
+                <ol class="breadcrumb" style="font-size:x-large">
+                  <li class="breadcrumb-item"><a href="dashboard.php">سەرەکی</a>
                   </li>
 
                   </li>
-                  <li class="breadcrumb-item active">Application
+                  <li class="breadcrumb-item active">داواکاری
                   </li>
                 </ol>
               </div>
@@ -214,39 +214,42 @@ if (strlen($_SESSION['uid'] == 0)) {
                   <div class="col-12">
                     <div class="card">
                       <div class="card-header">
-                        <h4 class="card-title">Addimission Form</h4>
-
+                       
                         <div class="heading-elements">
                           <ul class="list-inline mb-0">
 
                             <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>     
+                           
 
                           </ul>
+                          <div  class="row">
+                        <p style="font-size:16px; color:red; align:right ; font-weight: bold; " >:تێبینی ئەدمین  <?php echo $row['adminNote'] ?></p>
+
+                        </div>
                         </div>
                       </div>
-                      <div class="card-content">
+                      <br>
+                      <div  class="card-content">
                         <div class="card-body">
 
                         <input type="hidden"  name="appId" value="<?php echo $row['id'] ?>">
-                        <div class="row">
-                        <p style="font-size:16px; color:red" align="center">admin Note : <?php echo $row['adminNote'] ?></p>
-
-                        </div>
+                   
 
 
                         <div class="row">
-                            <div class="col-xl-4 col-lg-12">
+                        <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>First Name </h5>
+                                <h5>ناوی سێییەمت بە ئینگلیزی</h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="firstName" name="firstName" value="<?php echo $row['firstName'] ?>" type="text" required>
+                                  <input class="form-control white_bg" id="lastName" name="lastName"  value="<?php echo $row['lastName'] ?>" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
+                           
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>Second Name </h5>
+                                <h5>ناوی دووەمت بە ئینگلیزی </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="secondName" name="secondName"  value="<?php echo $row['secondName'] ?>" type="text" required>
                                 </div>
@@ -254,17 +257,18 @@ if (strlen($_SESSION['uid'] == 0)) {
                             </div>
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>Last Name </h5>
+                                <h5>ناوی یەکەمت بە ئینگلیزی </h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="lastName" name="lastName"  value="<?php echo $row['lastName'] ?>" type="text" required>
+                                  <input class="form-control white_bg" id="firstName" name="firstName" value="<?php echo $row['firstName'] ?>" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
+                           
                           </div>
 
 
-                          <div class="row" align="right">
-                            <div class="col-xl-4 col-lg-12">
+                          <div class="row" >
+                            <div style="padding-left:68%" class="col-xl-12 col-lg-12 text-right">
                               <fieldset>
                                 <h5>ناوی سیانیت </h5>
                                 <div class="form-group">
@@ -272,8 +276,9 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 </div>
                               </fieldset>
                             </div>
-                            <br>
-                            <div  class="col-xl-4 col-lg-12">
+                          </div>
+                          <br>
+                            <div  style="padding-left:68%" class="col-xl-12 col-lg-12 text-right">
                               <fieldset>
                                 <h5> ژمارەی موبایل </h5>
                                 <div class="form-group">
@@ -295,12 +300,12 @@ if (strlen($_SESSION['uid'] == 0)) {
                           <div class="row">
                           <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>Gender </h5>
+                                <h5>ڕەگەز </h5>
                                 <div class="form-group">
 
                                   <select class="form-control white_bg" id="gender" name="gender" required>
-                                    <option value="Male" <?php if($row['gender']=='Male') echo 'selected'; ?> >Male</option>
-                                    <option value="Female" <?php if($row['gender']=='Female') echo 'selected'; ?>>Female</option>
+                                    <option value="نێر" <?php if($row['gender']=='نێر') echo 'selected'; ?> >نێر</option>
+                                    <option value="مێ" <?php if($row['gender']=='مێ') echo 'selected'; ?>>مێ</option>
                                    </select>
                                 </div>
                               </fieldset>
@@ -309,7 +314,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                               <fieldset>
 
 
-                                <h5>Id Code </h5>
+                                <h5>ژمارەی ڕەگەزنامە </h5>
                                 <div class="form-group">
                                 <input class="form-control white_bg" id="idCode" name="idCode" value="<?php echo $row['idCode'] ?>" type="text" required>
                                 </div>
@@ -317,14 +322,14 @@ if (strlen($_SESSION['uid'] == 0)) {
                             </div>
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>Faculty </h5>
+                                <h5>فاکەلتی </h5>
                                 <div class="form-group">
                                 <input class="form-control white_bg" id="idCode" name="facultyId" value="<?php echo $row['idCode'] ?>" type="text" required>
 
                                 </div>
                               </fieldset>
                               <fieldset>
-                                <h5>Department </h5>
+                                <h5>بەش </h5>
                                 <div class="form-group">
                                 <input class="form-control white_bg" id="idCode" name="departmentId" value="<?php echo $row['idCode'] ?>" type="text" required>
 
@@ -335,9 +340,10 @@ if (strlen($_SESSION['uid'] == 0)) {
 
            
                           <div class="row">
-                            <div class="col-xl-6 col-lg-12">
+                            
+                            <div style="padding-left:68%" class="col-xl-12 col-lg-12 text-right">
                               <fieldset>
-                                <h5>Image</h5>
+                                <h5>وێنە </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="image"  name="image"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf"  required>
                                 </div>
@@ -348,7 +354,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                       
                           <div class="row" style="margin-top: 2%">
                             <div class="col-xl-6 col-lg-12">
-                              <button type="submit" name="submit2" class="btn btn-info btn-min-width mr-1 mb-1">Submit Again</button>
+                              <button type="submit" name="submit2" class="btn btn-info btn-min-width mr-1 mb-1">دووبارە ناردنەوە</button>
                             </div>
                           </div>
 
@@ -380,7 +386,6 @@ if (strlen($_SESSION['uid'] == 0)) {
                   <div class="col-12">
                     <div class="card">
                       <div class="card-header">
-                        <h4 class="card-title">Addimission Form</h4>
 
                         <div class="heading-elements">
                           <ul class="list-inline mb-0">
@@ -398,7 +403,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                           <div align="right" class="row">
                             <div class="col-xl-4 col-lg-12">
                               <fieldset>
-                                <h5>ناوی سێهەمت بە ئینگلیزی </h5>
+                                <h5>ناوی سێییەمت بە ئینگلیزی </h5>
                                 <div class="form-group">
                                   <input class="form-control white_bg" id="lastName" name="lastName" type="text" required>
                                 </div>
@@ -423,8 +428,8 @@ if (strlen($_SESSION['uid'] == 0)) {
                           </div>
 
 
-                          <div class="row" align="right">
-                            <div class="col-xl-4 col-lg-12">
+                          <div class="row ">
+                            <div style="padding-left:68%" class="col-xl-12 col-lg-12 text-right">
                               <fieldset>
                                 <h5>ناوی سیانیت بە کوردی </h5>
                                 <div class="form-group">
@@ -432,6 +437,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 </div>
                               </fieldset>
                             </div>
+                          </div>
                            
                             <!-- <div class="col-xl-4 col-lg-12">
                               <fieldset>
@@ -442,9 +448,8 @@ if (strlen($_SESSION['uid'] == 0)) {
                               </fieldset>
                             </div> -->
                           
-                          </div>
-                          <div class="row" align="right">
-                          <div  class="col-xl-4 col-lg-12">
+                          <div class="row" >
+                          <div   style="padding-left:68%" class="col-xl-12 col-lg-12 text-right">
                               <fieldset>
                                 <h5>ژمارەی موبایل </h5>
                                 <div class="form-group">
@@ -460,9 +465,9 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 <div class="form-group">
 
                                   <select class="form-control white_bg" id="gender" name="gender" required>
-                                    <option value="">Select</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                   
+                                    <option value="نێر">نێڕ</option>
+                                    <option value="مێ">مێ</option>
                                   </select>
                                 </div>
                               </fieldset>
@@ -501,7 +506,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                           <div class="row">
                          
 
-                            <div align="right" class="col-xl-6 col-lg-12">
+                            <div  style="padding-left:68%" class="col-xl-12 col-lg-12 text-right">
                               <fieldset>
                                 <h5>وێنەی خۆت </h5>
                                 <div class="form-group">
@@ -515,7 +520,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                       
                           <div class="row" style="margin-top: 2%">
                             <div class="col-xl-6 col-lg-12">
-                              <button type="submit" name="submit1" class="btn btn-info btn-min-width mr-1 mb-1">Submit</button>
+                              <button type="submit" name="submit1" class="btn btn-info btn-min-width mr-1 mb-1">ناردن</button>
                             </div>
                           </div>
 
@@ -540,12 +545,12 @@ if (strlen($_SESSION['uid'] == 0)) {
               if($appdata['status']=='selected' or $appdata['status']=='pending'){
                 if($appdata['status']=='selected'){
                   ?> 
-                  <p style="font-size:16px; color:green" align="center">Your First Addmission Form is Selected.</p>
+                  <p style="font-size:16px; color:green" align="center">داواکارییەکەت وەگیرا</p>
                   <?php 
                 }else{
                   // if status is pending
                   ?>
-                  <p style="font-size:16px; color:red" align="center">Your First Addmission Form is Submited and on  Review.</p>
+                  <p style="font-size:16px; color:red" align="center">داواکاریەکەت لەژێر چاوەروانیدایە </p>
                   <?php 
                 }
 
@@ -564,7 +569,7 @@ $row=$roww;
 
                 <table border="1" class="table table-bordered mg-b-0">
                 <tr>
-    <th>Course Applied (First Form)</th>
+    <th>زانیاری فۆرمی وەرگرتنی قوتابی</th>
     <!-- <td><a class="btn btn-outline-primary" href="selected.php?aticid=<?php echo $row['id'];?>" target="_blank">Print</a></td> -->
   </tr>
   <tr>
@@ -579,7 +584,7 @@ $row=$roww;
 
   </tr>
   <tr>
-    <th>ناوی سێهەمی قوتابی بە ئینگلیزی</th>
+    <th>ناوی سێییەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['lastName'];?></td>
 
   </tr>

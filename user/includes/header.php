@@ -3,7 +3,6 @@
     <div class="navbar-header">
         
         <ul class="nav navbar-nav flex-row">
-            <span style="color:white; font-size:larger; font-weight: bold;">BETA</span> 
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item mr-auto">
            

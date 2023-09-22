@@ -15,7 +15,6 @@
   <body>
     <header id="main-header">
       <a href="index.php"><img src="img/university.png" id="logo" /></a>
-      <h1 style="color:white" > Enrolment System (BETA Version)</h1>
       <nav>
         <ul>
           <li>
@@ -65,20 +64,19 @@
     <main>
       <div class="form">
         <h2>فۆڕمی چوونەژوورەوەی قوتابی </h2>
-        <h2> ( ڤێرژنی بێتا)</h2>
         <form action="login.inc.php" method="POST">
           <input
             type="number"
             id="student_id"
             name="code"
-            placeholder="کۆدی قوتابی"
+            placeholder="بەکارهێنەر"
             required
           />
           <input
             type="password"
             name="passcode"
             id="student_serial"
-            placeholder="سڕیال کۆدی قوتابی"
+            placeholder=" وشەی تێپەر"
             required
           />
           <button type="submit" name="login" class="btn">چوونەژوورەوە</button>
