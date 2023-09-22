@@ -45,11 +45,6 @@ if (strlen($_SESSION['uid'] == 0)) {
 
     mysqli_stmt_close($stmt);
 }
-
-//adding first form
-
-
-
   //second submit for first form 
 	if (isset($_POST['submit2'])) {
     // Validate and sanitize user inputs
@@ -57,7 +52,7 @@ if (strlen($_SESSION['uid'] == 0)) {
     $userId = $_SESSION['uid'];
     $gender = $_POST['gender'];
     $facultyId = (int)$_POST['facultyId'];
-    $departmentId = (int)$_POST['departmentId'];
+    $departmentId = (int)$_POST['depName'];
     $idCode = $_POST['idCode'];
     $kuLastName ='null';
     $kuSecondName = $_POST['kuSecondName'];
@@ -106,8 +101,6 @@ if (strlen($_SESSION['uid'] == 0)) {
     echo "<script>window.location.href ='addmission-form.php'</script>";
 }
 
-  //second submit for first form 
-
 
 
 
@@ -151,6 +144,7 @@ if (strlen($_SESSION['uid'] == 0)) {
   <body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     <?php include('includes/header.php'); ?>
     <?php include('includes/leftbar.php'); ?>
+    
     <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-header row">
