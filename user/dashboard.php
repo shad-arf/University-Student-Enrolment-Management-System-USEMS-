@@ -40,7 +40,7 @@ header('location:logout.php');
                 $uid=$_SESSION['uid'];
                 $ret=mysqli_query($con,"SELECT Code FROM student_data where Code='$uid'");
                 $row=mysqli_fetch_array($ret);
-                $rtp =mysqli_query($con ,"SELECT status from tbladmapplications where userId='$uid'");
+                $rtp =mysqli_query($con ,"SELECT * from tbladmapplications where userId='$uid'");
 
                 $row=mysqli_fetch_array($rtp);
                 $adsts=$row['status'];
@@ -59,14 +59,19 @@ header('location:logout.php');
 
 
                   <?php 
-                  echo ($row['adminNote']);
                   if($adsts=="selected") {?>
                       <h4 align="center">داواکارییەکەت وەرگیرا</h4>
                       
                     <?php } ?>
 
                     <?php if($adsts=="rejected") {?>
+                      <div class="row">
+                        <p style="font-size:16px; color:red" align="center"><?php echo $row['adminNote'] ?></p>
+
+                        </div>
+
                       <h4 align="center">داواکارییەکەت هەلوەشایەوە </h4>
+                      
                     <?php } ?>
                   <?php if($adsts=="pending") {?>
                       <h4 align="center">داواکارییەکەت لە چاوەروانی دایە لەلایەن ئەدمینانی زانکۆی سۆران </h4>

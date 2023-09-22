@@ -15,9 +15,9 @@ if (strlen($_SESSION['uid'] == 0)) {
   if (isset($_POST['submit1'])) {
     $userId = $_SESSION['uid'];
     $gender = $_POST['gender'];
-    $facultyId = (int)$_POST['facultyId'];
-    $departmentId = (int)$_POST['departmentId'];
-    $idCode = (int)$_POST['idCode'];
+    $facultyId = $_POST['facultyId'];
+    $departmentId = $_POST['departmentId'];
+    $idCode = $_POST['idCode'];
     $kuLastName = 'null';
     $kuSecondName = $_POST['kuSecondName'];
     $kuFirstName = $_POST['kuFirstName'];
@@ -25,14 +25,19 @@ if (strlen($_SESSION['uid'] == 0)) {
     $firstName = $_POST['firstName'];
     $secondName = $_POST['secondName'];
     $adminNote = ' '; // You can add more logic to set the adminNote value if needed
+    $upic = $_FILES["image"]["name"];
+    $extension = pathinfo($upic, PATHINFO_EXTENSION);
 
+    // Allowed file extensions
+    $allowed_extensions = array("jpg", "jpeg", "png", "gif");
     $userpic = md5($_FILES["image"]["name"]) . $extension;
 
     $query = "INSERT INTO `tbladmapplications` (`userId`, `gender`, `image`, `firstName`, `lastName`, `kuFirstName`, `kuLastName`, `idCode`, `facultyId`, `departmentId`, `kuSecondName`, `secondName`, `adminNote`)
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = mysqli_prepare($con, $query);
-    mysqli_stmt_bind_param($stmt, "ssssssiiissss", $userId, $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $adminNote);
+
+    mysqli_stmt_bind_param($stmt, "sssssssssssss", $userId, $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $adminNote);
 
     if (mysqli_stmt_execute($stmt)) {
         move_uploaded_file($_FILES["image"]["tmp_name"], "userimages/" . $userpic);
@@ -51,8 +56,8 @@ if (strlen($_SESSION['uid'] == 0)) {
     $appId = (int)$_POST['appId'];
     $userId = $_SESSION['uid'];
     $gender = $_POST['gender'];
-    $facultyId = (int)$_POST['facultyId'];
-    $departmentId = (int)$_POST['depName'];
+    $facultyId = $_POST['facultyId'];
+    $departmentId = $_POST['departmentId'];
     $idCode = $_POST['idCode'];
     $kuLastName ='null';
     $kuSecondName = $_POST['kuSecondName'];
@@ -84,7 +89,7 @@ if (strlen($_SESSION['uid'] == 0)) {
             `secondName`=?, `status`=? WHERE `id`=?";
         
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "ssssssiiissssi", $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $status, $appId);
+        mysqli_stmt_bind_param($stmt, "sssssiiissssi", $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $status, $appId);
 
         if (mysqli_stmt_execute($stmt)) {
             echo "<script>alert('First Form Updated.');</script>";
@@ -300,10 +305,9 @@ if (strlen($_SESSION['uid'] == 0)) {
                                 <div class="form-group">
 
                                   <select class="form-control white_bg" id="gender" name="gender" required>
-                                    <option value="Male" <?php if($row['genderStatus']=='Male') echo 'selected'; ?> >Male</option>
-                                    <option value="Female" <?php if($row['genderStatus']=='Female') echo 'selected'; ?>>Female</option>
-                                    <option value="Transgender" <?php if($row['genderStatus']=='Transgender') echo 'selected'; ?>>Transgender</option>
-                                  </select>
+                                    <option value="Male" <?php if($row['gender']=='Male') echo 'selected'; ?> >Male</option>
+                                    <option value="Female" <?php if($row['gender']=='Female') echo 'selected'; ?>>Female</option>
+                                   </select>
                                 </div>
                               </fieldset>
                             </div>
@@ -313,7 +317,7 @@ if (strlen($_SESSION['uid'] == 0)) {
 
                                 <h5>Id Code </h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="idCode" name="idCode" value="<?php echo $row['idCode'] ?>" type="text" required>
+                                <input class="form-control white_bg" id="idCode" name="idCode" value="<?php echo $row['idCode'] ?>" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
@@ -321,26 +325,15 @@ if (strlen($_SESSION['uid'] == 0)) {
                               <fieldset>
                                 <h5>Faculty </h5>
                                 <div class="form-group">
-                                  <select name='facultyId' id="facultyId" class="form-control white_bg" required="true">
-                                    <?php $query = mysqli_query($con, "select * from tblfaculty");
-                                    while ($row1 = mysqli_fetch_array($query)) {
-                                    ?>
-                                      <option value="<?php echo $row1['id']; ?>" <?php if($row['facultyId']==$row1['id']) echo 'selected'; ?>><?php echo $row1['name']; ?></option>
-                                    <?php } ?>
-                                  </select>
+                                <input class="form-control white_bg" id="idCode" name="facultyId" value="<?php echo $row['idCode'] ?>" type="text" required>
+
                                 </div>
                               </fieldset>
                               <fieldset>
                                 <h5>Department </h5>
                                 <div class="form-group">
-                                  <select name='departmrntId' id="facultyId" class="form-control white_bg" required="true">
-                                    <?php $query = mysqli_query($con, "select * from tbldep");
-                                    while ($row1 = mysqli_fetch_array($query)) {
-                                    ?>
-                                      <option value="<?php echo $row1['id']; ?>" <?php if($row['departmentId']==$row1['id']) echo 'selected'; ?>><?php echo $row1['name']; ?></option>
-                                    <?php } ?>
-                                  </select>
-                                </div>
+                                <input class="form-control white_bg" id="idCode" name="departmentId" value="<?php echo $row['idCode'] ?>" type="text" required>
+
                               </fieldset>
 
                             </div>
@@ -486,7 +479,7 @@ if (strlen($_SESSION['uid'] == 0)) {
 
                                 <h5>ژمارەی نازنامە </h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="idCode" name="idCode" type="text" required>
+                                  <input class="form-control white_bg" id="kuSecondName" name="idCode" type="text" required>
                                 </div>
                               </fieldset>
                             </div>
@@ -494,25 +487,15 @@ if (strlen($_SESSION['uid'] == 0)) {
                               <fieldset>
                                 <h5>فاکەلتی </h5>
                                 <div class="form-group">
-                                  <select name='facultyId' id="facultyId" class="form-control white_bg" required="true">
-                                    <?php $query = mysqli_query($con, "select * from tblfaculty");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                      <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
-                                    <?php } ?>
-                                  </select>
+                                  <input class="form-control white_bg" id="idCode" name="facultyId" type="text" required>
+                                   
                                 </div>
                               </fieldset>
                               <fieldset>
                                 <h5>بەش </h5>
                                 <div class="form-group">
-                                  <select name='departmentId' id="facultyId" class="form-control white_bg" required="true">
-                                    <?php $query = mysqli_query($con, "select * from tbldep");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                      <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
-                                    <?php } ?>
-                                  </select>
+                                    <input class="form-control white_bg" id="idCode" name="departmentId" type="text" required>
+
                                 </div>
                               </fieldset>
                               
@@ -577,12 +560,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                 $cid = $appdata['id'];
 
                 $row=$appdata;
-                $ret=mysqli_query($con,"SELECT tbladmapplications.*, tblfaculty.name AS facultyName, tbldep.name AS depName, tbluser.FirstName, tbluser.LastName, tbluser.MobileNumber, tbluser.Email
-FROM tbladmapplications
-INNER JOIN tbluser ON tbluser.id = tbladmapplications.userId
-INNER JOIN tblfaculty ON tbladmapplications.facultyId = tblfaculty.id
-INNER JOIN tbldep ON tbladmapplications.departmentId = tbldep.id
-WHERE tbladmapplications.id = '$cid';");
+                $ret=mysqli_query($con,"SELECT * FROM tbladmapplications where userId=$stuid");
 $cnt=1;
 while ($roww=mysqli_fetch_array($ret)) {
 $row=$roww;
@@ -641,12 +619,12 @@ $row=$roww;
   </tr>
   <tr>
     <th>فاکەلتی</th>
-    <td><?php  echo $row['facultyName'];?></td>
+    <td><?php  echo $row['facultyId'];?></td>
 
   </tr>
   <tr>
     <th>بەش</th>
-    <td><?php  echo $row['depName'];?></td>
+    <td><?php  echo $row['departmentId'];?></td>
 
                 </table>
                 <?php
