@@ -118,15 +118,17 @@ $sdata=$_POST['searchdata'];
 <h4 align="center">Result againt "<?php echo $sdata;?>" keyword </h4>
 <div class="row">
 <div class="col-xl-12 col-lg-12">
+  <h2>First Application</h2>
 <table class="table mb-0">
+
 <thead>
                 <tr>
                 <th> </th>
 
                   <th>First Name</th>
                   <th>Second Name</th>
-                  <th>Email</th>
-                  <th>Id Code</th>
+                  <th>Department</th>
+                  <th>Student 12th gard Code</th>
                   <th>Mobile</th>
                    <th>Action</th>
                 </tr>
@@ -136,7 +138,7 @@ $sdata=$_POST['searchdata'];
   // get user id from session
 
             
-$ret=mysqli_query($con,"select tbladmapplications.idCode,tbladmapplications.id as apid, tbladmapplications.firstName,tbladmapplications.secondName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId where tbluser.FirstName like '%$sdata%' || tbluser.MobileNumber like '%$sdata%' || tbluser.Email like '%$sdata%'");
+$ret=mysqli_query($con,"SELECT * FROM  tbladmapplications WHERE tbladmapplications.userId like '%$sdata%' || tbladmapplications.firstName like '%$sdata%' || tbladmapplications.kuSecondName like '%$sdata%' || tbladmapplications.idCode like '%$sdata%' ");
 $cnt=1;
 $num=mysqli_num_rows($ret);
 if($num>0)
@@ -149,9 +151,9 @@ while ($row=mysqli_fetch_array($ret)) {
                 <td><?php echo $cnt;?></td>
                   <td><?php  echo $row['firstName'];?></td>
                   <td><?php  echo $row['secondName'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
-                    <td><?php  echo $row['idCode'];?></td>
-                    <td><?php  echo $row['MobileNumber'];?></td>
+                    <td><?php  echo $row['departmentId'];?></td>
+                    <td><?php  echo $row['userId'];?></td>
+                    <td><?php  echo $row['kuSecondName'];?></td>
          
                   <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>">View Details</a></td>
                 </tr>
@@ -165,6 +167,50 @@ $cnt=$cnt+1;
 <?php } ?>
 
 </table>
+
+
+
+<h2>Second Application</h2>
+<table class="table mb-0">
+
+ <thead>
+                <tr>
+                <th> </th>
+
+                <th>idCardNumber</th>
+                <th>Mobile</th>
+                <th>Id Code</th>
+                <th>Action</th>
+                </tr>
+              </thead>
+  <?php
+   
+   if($type =='super_admin'){
+     $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications WHERE  status='pending'");
+
+   }   
+$cnt=1;
+while ($row=mysqli_fetch_array($ret)) {
+
+?>
+              
+                <tr>
+                  <td><?php echo $cnt;?></td>
+                  <td><?php  echo $row['city'];?></td>
+                  <td><?php  echo $row['state'];?></td>
+                  <td><?php  echo $row['userId'];?></td>
+                  <td><?php  echo $row['status'];?></td>
+
+                  <td><a href="view-secondappform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
+
+                </tr>
+                <?php 
+$cnt=$cnt+1;
+}?>
+
+
+</table>
+
 </div>
 </div>
 <?php }?>

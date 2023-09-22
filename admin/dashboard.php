@@ -31,8 +31,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     <div class="content-wrapper">
       <div class="content-header row">
       </div>
-      <div class="content-body">
-        <!-- Revenue, Hit Rate & Deals -->
+      <!-- <div class="content-body">
         <div class="row">
           <div class="col-xl-4 col-lg-6 col-12">
             <div class="card pull-up">
@@ -42,11 +41,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                   <div class="media d-flex">
                     <div class="media-body text-left">
 <?php 
-$sql =mysqli_query($con ,"SELECT id from tblfaculty");
-$cntcourse=mysqli_num_rows($sql);
+// $sql =mysqli_query($con ,"SELECT id from tblfaculty");
+// $cntcourse=mysqli_num_rows($sql);
 
 ?>
- <h3 class="info"><?php echo $cntcourse;?></h3>
+ <h3 class="info"><?php //echo $cntcourse;?></h3>
                       <h6>Listed Faculties</h6>
                     </div>
                     <div>
@@ -61,7 +60,7 @@ $cntcourse=mysqli_num_rows($sql);
               </a>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-xl-4 col-lg-6 col-12">
             <div class="card pull-up">
               <div class="card-content">

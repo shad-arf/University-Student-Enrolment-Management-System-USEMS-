@@ -165,15 +165,11 @@ while ($row=mysqli_fetch_array($ret)) {
 
   </tr>
   <tr>
-    <th>Student Kurdish Second Name</th>
+    <th>Student phone Number</th>
     <td><?php  echo $row['kuSecondName'];?></td>
 
   </tr>
-  <tr>
-    <th>Student Kurdish Last Name</th>
-    <td><?php  echo $row['kuLastName'];?></td>
-
-  </tr>
+  
   <tr>
   <th>Student Pic</th>
   <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
@@ -193,23 +189,22 @@ while ($row=mysqli_fetch_array($ret)) {
   </tr>
   <tr>
     <th>Student Faculty</th>
-    <td><?php  echo $row['facultyName'];?></td>
+    <td><?php  echo $row['facultyId'];?></td>
 
   </tr>
   <tr>
     <th>Student Department</th>
-    <td><?php  echo $row['depName'];?></td>
+    <td><?php  echo $row['departmentId'];?></td>
 
   </tr>
-  <?php if( $row['status'] == 'pending'){?>
+
   <tr>
     <th>Admin Note</th>
     <td>
-      <textarea name="adminNote"><?php  echo $row['adminNote'];?></textarea>
+      <textarea value="$row['adminNote']" name="adminNote"><?php  echo $row['adminNote'];?></textarea>
     </td>
 
   </tr>
-  <?php }?>
   
   
   <tr align="center">

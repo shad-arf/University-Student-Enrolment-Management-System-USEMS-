@@ -74,7 +74,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
         <!-- Input Mask start -->
    
         <!-- Formatter start -->
-<table class="table mb-0">
+        <table class="table mb-0">
 <caption>First Application</caption>
 
  <thead>
@@ -83,43 +83,39 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
                   <th>First Name</th>
                   <th>Second Name</th>
-                  <th>Email</th>
+                  <th>Third Name</th>
                   <th>Id Code</th>
-                  <th>Mobile</th>
                    <th>Action</th>
+                  <th>More</th>
+
                 </tr>
               </thead>
-  <?php
-   $admid=$_SESSION['aid'];
-   // get admin id from tbladmin where id is equal to session id
- $ret=mysqli_query($con,"select * from tbladmin where ID='$admid'");
- $row=mysqli_fetch_array($ret);
- $type = $row['type'];   
- if($type=='super_admin'){
-  $ret=mysqli_query($con,"select tbladmapplications.idCode,tbladmapplications.id as apid, tbladmapplications.firstName,tbladmapplications.secondName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId where tbladmapplications.status='selected'");
+              <?php
+$admid = $_SESSION['aid'];
+// Get admin id from tbladmin where id is equal to session id
+$ret = mysqli_query($con, "select * from tbladmin where ID='$admid'");
+$row = mysqli_fetch_array($ret);
+$type = $row['type'];
 
- }else{
-   $ret=mysqli_query($con,"select tbladmapplications.idCode,tbladmapplications.id as apid, tbladmapplications.firstName,tbladmapplications.secondName,tbluser.MobileNumber,tbluser.Email from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId where tbladmapplications.status='selected' and tbladmapplications.facultyId='$type'");
+if ($type == 'super_admin') {
+    $ret = mysqli_query($con, "SELECT *  FROM tbladmapplications WHERE status='selected' ");
+} 
 
- }        
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
-
-?>
-              
-                <tr>
-                  <td><?php echo $cnt;?></td>
-                  <td><?php  echo $row['firstName'];?></td>
-                  <td><?php  echo $row['secondName'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
-                    <td><?php  echo $row['idCode'];?></td>
-                    <td><?php  echo $row['MobileNumber'];?></td>
-
-                  <td><a href="view-appform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
-                </tr>
-                <?php 
-$cnt=$cnt+1;
-}?>
+$cnt = 1;
+while ($row = mysqli_fetch_array($ret)) {
+  ?>
+      <tr>
+          <td><?php echo $cnt; ?></td>
+          <td><?php echo $row['firstName']; ?></td>
+          <td><?php echo $row['secondName']; ?></td>
+          <td><?php echo $row['lastName']; ?></td>
+          <td><?php echo $row['userId']; ?></td>
+          <td><?php echo $row['status']; ?></td>
+          <td><a href="view-appform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
+      </tr>
+      <?php
+      $cnt = $cnt + 1;
+  } ?>
 
 
 </table>
@@ -131,22 +127,18 @@ $cnt=$cnt+1;
                 <tr>
                 <th> </th>
 
-                  <th>Nationality</th>
-                  <th>idCardNumber</th>
-                  <th>Email</th>
-                  <th>Mobile</th>
-                   <th>Action</th>
+                <th>idCardNumber</th>
+                <th>Mobile</th>
+                <th>Id Code</th>
+                <th>Action</th>
                 </tr>
               </thead>
   <?php
    
    if($type =='super_admin'){
-     $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber,tbluser.MobileNumber,tbluser.Email from  tblsecondadmapplications inner join tbluser on tbluser.id=tblsecondadmapplications.userId where tblsecondadmapplications.status='selected'");
+     $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications WHERE  status='selected'");
 
-   }else{
-    $ret=mysqli_query($con,"select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality,tblsecondadmapplications.idCardNumber,tbluser.MobileNumber,tbluser.Email from  tblsecondadmapplications inner join tbluser on tbluser.id=tblsecondadmapplications.userId inner join tbladmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tblsecondadmapplications.status='selected' and tbladmapplications.facultyId='$type'");
-
-   }           
+   }   
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
@@ -154,15 +146,13 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
-                  <td><?php  echo $row['nationality'];?></td>
-                  <td><?php  echo $row['idCardNumber'];?></td>
-                    <td><?php  echo $row['Email'];?></td>
-                    <td><?php  echo $row['MobileNumber'];?></td>
+                  <td><?php  echo $row['city'];?></td>
+                  <td><?php  echo $row['state'];?></td>
+                  <td><?php  echo $row['userId'];?></td>
+                  <td><?php  echo $row['status'];?></td>
 
-                  <td>
-                  <a href="selected.php?aticid=<?php echo $row['apid'];?>" target="_blank">Print</a> 
-                  &nbsp; &nbsp; 
-                  <a href="view-secondappform.php?aticid=<?php echo $row['apid'];?>" target="_blank">View Details</a></td>
+                  <td><a href="view-secondappform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
+
                 </tr>
                 <?php 
 $cnt=$cnt+1;

@@ -89,7 +89,7 @@ if (strlen($_SESSION['uid'] == 0)) {
             `secondName`=?, `status`=? WHERE `id`=?";
         
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sssssiiissssi", $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $status, $appId);
+        mysqli_stmt_bind_param($stmt, "ssssssssssssi", $gender, $userpic, $firstName, $lastName, $kuFirstName, $kuLastName, $idCode, $facultyId, $departmentId, $kuSecondName, $secondName, $status, $appId);
 
         if (mysqli_stmt_execute($stmt)) {
             echo "<script>alert('First Form Updated.');</script>";

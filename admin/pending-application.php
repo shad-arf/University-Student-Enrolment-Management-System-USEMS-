@@ -97,10 +97,8 @@ $row = mysqli_fetch_array($ret);
 $type = $row['type'];
 
 if ($type == 'super_admin') {
-    $ret = mysqli_query($con, "SELECT *  FROM tbladmapplications ");
-} else {
-    $ret = mysqli_query($con, "SELECT* FROM tbladmapplications ");
-}
+    $ret = mysqli_query($con, "SELECT *  FROM tbladmapplications WHERE status='pending' ");
+} 
 
 $cnt = 1;
 while ($row = mysqli_fetch_array($ret)) {
@@ -137,12 +135,9 @@ while ($row = mysqli_fetch_array($ret)) {
   <?php
    
    if($type =='super_admin'){
-     $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications ");
+     $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications WHERE  status='pending'");
 
-   }else{
-    $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications ");
-
-   }           
+   }   
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
