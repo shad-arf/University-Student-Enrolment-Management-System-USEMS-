@@ -198,13 +198,37 @@ if($adsts=="selected"  )
             </div>
           </div>
         </div>
-         <?php }?>
-
-        <?php }?>
-
+         <?php }
+        }
+        $rtp =mysqli_query($con ,"SELECT * from tblnotice");
         
+        while ($row = mysqli_fetch_array($rtp)) {
+          $text = $row['Title'] . $row['Decription']; // Combine title and description for inspection
+
+          // Determine the text direction (RTL for Arabic, LTR for others)
+          $textDirection = preg_match('/\p{Arabic}/u', $text) ? 'rtl' : 'ltr';
+      
+          // Start the HTML block with the determined text direction
+          echo '<div style="direction: ' . $textDirection . ';">';
+      
+          echo '<h2 style="color: #000">' . $row['Title'] . '</h2>';
+          $noticeDate = date('F j, Y', strtotime($row['CreationDate'])); // Format the date as desired
+          echo '<p style="font-size: 12px;color: #666;margin-top: 5px;"> ' . $noticeDate . '</p>';
+          echo '<p style="color: #111;">' . $row['Decription'] . '</p>';
+      
+          // Close the HTML block
+          echo '</div>';
+  
+          // Display the date
+        
+      }
+?>  
+     
         </div>
-       </div></div></div>
+       </div>
+      </div>
+      </div>
+
 <?php include('includes/footer.php');?>
   <!-- BEGIN VENDOR JS-->
   <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>

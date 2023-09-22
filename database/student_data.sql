@@ -117,8 +117,8 @@ CREATE TABLE IF NOT EXISTS `tbldocument` (
 DROP TABLE IF EXISTS `tblnotice`;
 CREATE TABLE IF NOT EXISTS `tblnotice` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Title` varchar(250) DEFAULT NULL,
-  `Decription` text DEFAULT NULL,
+  `Title` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Decription` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;

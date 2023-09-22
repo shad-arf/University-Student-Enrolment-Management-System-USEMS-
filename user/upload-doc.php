@@ -495,7 +495,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 <fieldset>
                   <h5>ID Card File</h5>
                   <div class="form-group">
-                    <input class="form-control white_bg" id="idCardFile"  name="idCardFile"  type="file"  required>
+                    <input class="form-control white_bg" id="idCardFile"  name="idCardFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf"  required>
                   </div>
                 </fieldset>
               </div>
@@ -503,7 +503,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 <fieldset>
                   <h5>Nationalty Card File</h5>
                   <div class="form-group">
-                    <input class="form-control white_bg" id="nationaltyCardFile"  name="nationaltyCardFile"  type="file"  required>
+                    <input class="form-control white_bg" id="nationaltyCardFile"  name="nationaltyCardFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
                   </div>
                 </fieldset>
               </div>
@@ -515,7 +515,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 <fieldset>
                   <h5>Certificate 12 File</h5>
                   <div class="form-group">
-                    <input class="form-control white_bg" id="certificate12File"  name="certificate12File"  type="file"  required>
+                    <input class="form-control white_bg" id="certificate12File"  name="certificate12File"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf"  required>
                   </div>
                 </fieldset>
               </div>
@@ -523,7 +523,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 <fieldset>
                   <h5>Eye Test File</h5>
                   <div class="form-group">
-                    <input class="form-control white_bg" id="eyeTestFile"  name="eyeTestFile"  type="file"  required>
+                    <input class="form-control white_bg" id="eyeTestFile"  name="eyeTestFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
                   </div>
                 </fieldset>
               </div>
@@ -535,7 +535,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                 <fieldset>
                   <h5>Blood Test File</h5>
                   <div class="form-group">
-                    <input class="form-control white_bg" id="bloodTestFile"  name="bloodTestFile"  type="file"  required>
+                    <input class="form-control white_bg" id="bloodTestFile"  name="bloodTestFile"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
                   </div>
                 </fieldset>
               </div>

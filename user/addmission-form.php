@@ -345,7 +345,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                               <fieldset>
                                 <h5>Image</h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="image"  name="image"  type="file"  required>
+                                  <input class="form-control white_bg" id="image"  name="image"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf"  required>
                                 </div>
                               </fieldset>
                             </div>
@@ -511,7 +511,7 @@ if (strlen($_SESSION['uid'] == 0)) {
                               <fieldset>
                                 <h5>وێنەی خۆت </h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="image" name="image" type="file" required>
+                                  <input class="form-control white_bg" id="image" accept=".jpg, .jpeg, .png, .gif, .pdf" name="image" type="file" required>
                                 </div>
                               </fieldset>
                             </div>
@@ -633,6 +633,7 @@ $row=$roww;
         </div>
       </div>
     </div>
+    
     <?php include('includes/footer.php'); ?>
     <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
     <script src="app-assets/vendors/js/forms/extended/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
