@@ -316,14 +316,16 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
           
              $rw = mysqli_num_rows($query);
              if ($rw > 0) {
+               
                while ($row = mysqli_fetch_array($query)) {
                  $appdata=$row;
                  $id = $row['id'];
-   
+                  
                  }
-               }
-             $queryforcount = mysqli_query($con, "select * from tblsecondadmapplications where userId=$stuid");
-             $rwcount = mysqli_num_rows($queryforcount);
+                }
+                $queryforcount = mysqli_query($con, "select * from tblsecondadmapplications where userId=$stuid");
+                $rwcount = mysqli_num_rows($queryforcount);
+              
               if($appdata['status']=='selected' && $rwcount==0){
                 ?>
 
@@ -561,24 +563,21 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 </form>
 
                 <?php }else{
-                   $stuid = $_SESSION['uid'];
-                   $query = mysqli_query($con, "select * from tblsecondadmapplications where userId=$stuid");
-                   $rw = mysqli_num_rows($query);
-                   if ($rw == 1) {
+                  $stuid = $_SESSION['uid'];
+                  $query = mysqli_query($con, "select * from tblsecondadmapplications where userId=$stuid");
+                  $rw = mysqli_num_rows($query);
+                  if ($rw == 1) {
                     while ($row = mysqli_fetch_array($query)) {
                       if($row['status']=='pending'){
                         ?>
-<!-- <p style="font-size:16px; color:red" align="center">Your Second Addmission Form already submitted.</p> -->
-            
-            <br>
-                        <?php
+ <p style="font-size:16px; color:red" align="center">Your Second Addmission Form already submitted.</p> 
+ 
+ <br>
+ <?php
                       }
                     }
-                    }
-                        ?> 
-                
-
-                  <?php
+                  }
+                  
                 } 
                 
                 $stuid = $_SESSION['uid'];
@@ -601,32 +600,32 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                         <p style="font-size:16px; color:red" align="center">Your Second Addmission Form is Submited and on  Review.</p>
                         <?php 
                       }
-                        ?>
+                      ?>
                         
-
-                                        
-                      
-                      <!-- <p style="font-size:16px; color:green" align="center">Your Second Addmission Form is Selected.</p> -->
-                      <table border="1" class="table table-bordered mg-b-0">
-                                      <tr>
+                        
+                        
+                        
+                        <!-- <p style="font-size:16px; color:green" align="center">Your Second Addmission Form is Selected.</p> -->
+                        <table border="1" class="table table-bordered mg-b-0">
+                          <tr>
                     <th>Course Applied (Second Form)</th>
                     <td></td>
                   </tr>
                   <tr>
                     <th>Date Of Breath</th>
                     <td><?php  echo $row['dob'];?></td>
-                    </td>
-
-                  </tr>
-                  <tr>
-                    <th>Nationality</th>
-                    <td><?php  echo $row['nationality'];?></td>
-
-                  </tr>
-                  <tr>
-                    <th>Mother Name</th>
+                  </td>
+                  
+                </tr>
+                <tr>
+                  <th>Nationality</th>
+                  <td><?php  echo $row['nationality'];?></td>
+                  
+                </tr>
+                <tr>
+                  <th>Mother Name</th>
                     <td><?php  echo $row['motherName'];?></td>
-
+                    
                   </tr>
                   <tr>
                     <th>place Of Breath</th>
@@ -711,8 +710,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                     <th>Eye Test File</th>
                     <td><img src="../user/userdocs/<?php echo $row['eyeTestFile'];?>" width="200" height="150"></td>
                   </tr>
-                    </table>
-            
+                </table>
+                
                       <br>
                       <?php
 
@@ -723,7 +722,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
 
                     <form name="submitsecondreject" method="post" enctype="multipart/form-data">
-                    <section class="formatter" id="formatter">
+                      <section class="formatter" id="formatter">
                       <div class="row">
                         <div class="col-12">
                           <div class="card">
@@ -961,11 +960,18 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
                       <?php
 
-                    }
+}
 
                   }
+                }else{?>
+                  <h4 align="center" style='color:blue'>تکایە چاوەڕوان بە، داواکارییەکەت لە چاوەروانی دایە لەلایەن ئەدمینانی زانکۆی سۆران پێداچوونەوەی بۆ دەکرێت</h4>
+                  <div class="progress progress-sm mt-1 mb-0 box-shadow-2">
+                  <div class="progress-bar bg-gradient-x-info" role="progressbar" style="width: 100%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                  <?php
                 }
-                    
+             
                 ?>
             <!-- second form -->
 

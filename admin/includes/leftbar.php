@@ -31,7 +31,15 @@
        if($row['type']=='super_admin'){
 ?>
         
- 
+        <li class=" nav-item"><a href="#"><i class="la la-user"></i><span class="menu-title" data-i18n="nav.footers.main">Admin</span></a>
+          <ul class="menu-content">
+            <li><a class="menu-item" href="add-admin.php" data-i18n="nav.footers.footer_light">Add Admiin</a>
+            </li>
+            <li><a class="menu-item" href="manage-admin.php" data-i18n="nav.footers.footer_dark">Manage Admin</a>
+            </li>
+         
+          </ul>
+        </li>
 <li class=" nav-item"><a href="#"><i class="la la-download"></i><span class="menu-title" data-i18n="nav.footers.main">Public Notice</span></a>
           <ul class="menu-content">
             <li><a class="menu-item" href="add-notice.php" data-i18n="nav.footers.footer_light">Add Notice</a>

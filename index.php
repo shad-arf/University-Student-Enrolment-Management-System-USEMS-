@@ -15,6 +15,7 @@
   <body>
     <header id="main-header">
       <a href="index.php"><img src="img/university.png" id="logo" /></a>
+      <h1 style="color:white" > Enrolment System (BETA Version)</h1>
       <nav>
         <ul>
           <li>
@@ -63,7 +64,8 @@
 
     <main>
       <div class="form">
-        <h2>فۆڕمی چوونەژوورەوەی قوتابی</h2>
+        <h2>فۆڕمی چوونەژوورەوەی قوتابی </h2>
+        <h2> ( ڤێرژنی بێتا)</h2>
         <form action="login.inc.php" method="POST">
           <input
             type="number"
@@ -85,7 +87,7 @@
     </main>
 
     <footer id="footer">
-      <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a></p>
+      <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a> | Testing And Maintaining by <a href="">Shad & mohammed Qasm</a></p>
     </footer>
   </body>
 </html>

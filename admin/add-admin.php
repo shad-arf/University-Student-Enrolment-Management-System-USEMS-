@@ -3,7 +3,9 @@ session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
 
-
+if (strlen($_SESSION['aid'] == 0)) {
+    header('location:logout.php');
+} else {
     // get this user infromation
     
     $adminid=$_SESSION['aid'];
@@ -162,11 +164,6 @@ try{
                                 <div class="form-group">
                                   <select name='faculty' id="faculty" class="form-control white_bg" required="true">
                                     <option value="super_admin">Super Admin</option>
-                                    <?php $query = mysqli_query($con, "select * from tblfaculty");
-                                    while ($row = mysqli_fetch_array($query)) {
-                                    ?>
-                                      <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
-                                    <?php } ?>
                                   </select>
                                 </div>
                               </fieldset>
@@ -243,4 +240,4 @@ try{
     </body>
 
     </html>
-<?php  ?>
+<?php }  ?>
