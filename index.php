@@ -13,83 +13,58 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/index.css" />
+    <style>
+      body {
+        background-image: url('img/campus.jpg');
+        background-size: cover; 
+        background-repeat: no-repeat;  
+      
+      }
+    </style>
   </head>
   <body>
-    <header id="main-header">
-      <a href="index.php"><img src="img/university.png" id="logo" /></a>
-      <nav>
-        <ul>
-          <li>
-            <a
-              href="index.php"
-              style="border-bottom: 2px solid rgb(237, 234, 10)"
-              >سەرەکی</a
-            >
-          </li>
-          <li style="display: none">
-            <a href="help.php">فێرکاری خۆتۆمارکردن</a>
-          </li>
-          <li><a href="contact.php">پەیوەندیمان پێوەبکە</a></li>
-        </ul>
-      </nav>
-      <a href="#side-drawer" class="menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
-    </header>
-    <aside id="side-drawer">
-      <header>
-        <a href="#" class="menu-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </a>
-      </header>
-      <nav>
-        <ul>
-          <li>
-            <a
-              href="index.php"
-              style="border-bottom: 2px solid rgb(237, 234, 10)"
-              >سەرەکی</a
-            >
-          </li>
-          <li style="display: none">
-            <a href="help.php">فێرکاری خۆتۆمارکردن</a>
-          </li>
-          <li><a href="contact.php">پەیوەندیکردن</a></li>
-        </ul>
-      </nav>
-    </aside>
+   
+  
+  <main>
+  <div style="display: flex; justify-content: center; align-items: center; text-align: right; flex-direction: row;">
+  <!-- <img style="width: 10%;padding-top:20px" src="images/SoranLogo.png" alt="soranlogo"> -->
 
-    <main>
-      <div class="form">
-        <h2>فۆڕمی چوونەژوورەوەی قوتابی </h2>
-        <form action="login.inc.php" method="POST">
-          <input
-            type="number"
-            id="student_id"
-            name="code"
-            placeholder="بەکارهێنەر"
-            required
-          />
-          <input
-            type="password"
-            name="passcode"
-            id="student_serial"
-            placeholder=" وشەی تێپەر"
-            required
-          />
-          <!-- <div class="g-recaptcha" data-sitekey="6LdtVkkoAAAAAKuBsyePlxYop4kH1ADKNniZ9GOk"></div> -->
-          <button type="submit" name="login" class="btn">چوونەژوورەوە</button>
+  <div style="padding: 0 10px">
+    <h3>حکومەتی هەرێمی کوردستان</h3>
+    <h3>سه‌رۆکایه‌تی ئه‌نجوومه‌نی وه‌زیران</h3>
+    <h3>وه‌زاره‌تی خوێندنی باڵاو توێژینه‌وه‌ی زانستی</h3>
+    <h3>زانکۆی سۆران</h3>
+  </div>
+  <img style="width: 10%;padding-top:20px" src="images/SoranLogo.png" alt="soranlogo">
+</div>
 
-        </form>
-      </div>
-    </main>
+  <div style="background-color: rgba(240, 240, 240, 0.7);" class="form">
+    <h2>فۆڕمی چوونەژوورەوەی قوتابی </h2>
+    <form action="login.inc.php" method="POST">
+      <input 
+        type="number"
+        id="student_id"
+        name="code"
+        placeholder="بەکارهێنەر"
+        required
+      />
+      <input 
+        type="password"
+        name="passcode"
+        id="student_serial"
+        placeholder=" وشەی تێپەر"
+        required
+      />
+      <!-- <div class="g-recaptcha" data-sitekey="6LdtVkkoAAAAAKuBsyePlxYop4kH1ADKNniZ9GOk"></div> -->
+      <button type="submit" name="login" class="btn">چوونەژوورەوە</button>
+    </form>
+  </div>
+</main>
+
 
     <footer id="footer">
-      <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a> | Testing And Maintaining by <a href="">Shad & Mohammed</a></p>
+    
+      <p>Copyright - 2023 | Developed By <a href="https://www.facebook.com/Leaderpeshawa" target="_blank">Peshawa</a> &<a target="_blank" href="https://www.facebook.com/itszaid.1"> Zaid</a> | Testing And Maintaining by <a  href="https://www.facebook.com/shad.asadiq.3/">Shad</a> & <a target="_blank" href="#">Mohammed</a></p>
     </footer>
   </body>
 </html>
