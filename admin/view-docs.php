@@ -135,6 +135,7 @@ while($row=mysqli_fetch_array($query)){
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
 
+<?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

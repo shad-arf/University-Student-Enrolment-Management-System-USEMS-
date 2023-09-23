@@ -140,6 +140,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
 
     </p>
   </footer>
+  <?php include('includes/footerjs.php'); ?>
   
 </body>
 </html>

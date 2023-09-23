@@ -116,6 +116,7 @@ $cnt=$cnt+1;
     
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
+<?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

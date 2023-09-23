@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -79,13 +81,15 @@
             placeholder=" وشەی تێپەر"
             required
           />
+          <!-- <div class="g-recaptcha" data-sitekey="6LdtVkkoAAAAAKuBsyePlxYop4kH1ADKNniZ9GOk"></div> -->
           <button type="submit" name="login" class="btn">چوونەژوورەوە</button>
+
         </form>
       </div>
     </main>
 
     <footer id="footer">
-      <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a> | Testing And Maintaining by <a href="">Shad & mohammed Qasm</a></p>
+      <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a> | Testing And Maintaining by <a href="">Shad & Mohammed</a></p>
     </footer>
   </body>
 </html>

@@ -69,5 +69,7 @@ if(isset($_POST['login']))
     <footer id="footer">
       <p>Copyright - 2023 | Developed By <a href="">Peshawa & Zaid</a></p>
     </footer>
+    <?php include('includes/footerjs.php'); ?>
+
   </body>
 </html>

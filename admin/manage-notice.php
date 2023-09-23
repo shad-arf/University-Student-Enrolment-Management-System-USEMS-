@@ -124,7 +124,7 @@ $cnt=$cnt+1;
     
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
-<?php include('../include/links.php');?>
+<?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

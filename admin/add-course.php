@@ -133,6 +133,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
+<?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

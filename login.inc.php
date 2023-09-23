@@ -11,6 +11,32 @@ if (isset($_POST['login'])) {
         header("Location: 'admin/login.php'");
 
     }
+//     $recaptcha_secret = '6LdtVkkoAAAAAKuBsyePlxYop4kH1ADKNniZ9GOk'; // Replace with your actual secret key
+// $recaptcha_response = $_POST['g-recaptcha-response'];
+
+// // Create a POST request to the Google reCAPTCHA API
+// $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+// $recaptcha_data = [
+//     'secret' => $recaptcha_secret,
+//     'response' => $recaptcha_response
+// ];
+    
+// $recaptcha_options = [
+//     'http' => [
+//         'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+//         'method' => 'POST',
+//         'content' => http_build_query($recaptcha_data)
+//     ]
+// ];
+//     $recaptcha_context = stream_context_create($recaptcha_options);
+//     $recaptcha_result = file_get_contents($recaptcha_url, false, $recaptcha_context);
+//     $recaptcha_result = json_decode($recaptcha_result);
+
+//     if (!$recaptcha_result->success) {
+//         // reCAPTCHA verification failed, handle the error (e.g., show an error message)
+//         header("Location: index.php?error=captcha");
+//         exit();
+//     }
     // Use prepared statements to prevent SQL injection
     $query = "SELECT * FROM student_data WHERE Code = ? AND Passcode = ?";
     

@@ -175,6 +175,7 @@ while ($row=mysqli_fetch_array($ret)) {
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
+<?php include('includes/footerjs.php'); ?>
  
 </body>
 </html>

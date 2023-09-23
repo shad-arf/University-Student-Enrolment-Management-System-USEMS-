@@ -33,8 +33,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     <div class="content-wrapper">
       <div class="content-header row">
       </div>
-      <!-- <div class="content-body">
+       <div class="content-body">
         <div class="row">
+          <!--
           <div class="col-xl-4 col-lg-6 col-12">
             <div class="card pull-up">
               <div class="card-content">
@@ -257,19 +258,8 @@ $cntapp=mysqli_num_rows($ter);
         </div></div></div>
        
 <?php include('includes/footer.php');?>
-<script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
-  <script src="app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>
-  <script src="app-assets/vendors/js/charts/raphael-min.js" type="text/javascript"></script>
-  <script src="app-assets/vendors/js/charts/morris.min.js" type="text/javascript"></script>
-  <script src="app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js"
-  type="text/javascript"></script>
-  <script src="app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js"
-  type="text/javascript"></script>
-  <script src="app-assets/data/jvector/visitor-data.js" type="text/javascript"></script>
-  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
-  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
-  <script src="app-assets/js/scripts/pages/dashboard-sales.js" type="text/javascript"></script>
+<?php include('includes/footerjs.php'); ?>
+
 </body>
 </html>
 <?php } ?>

@@ -64,7 +64,19 @@ echo "<script>window.location.href ='pending-application.php'</script>";
 <head>
 
   <title>College Addmission Management System|| View Form</title>
-  <?php include('../include/links.php');?>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+  rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/morris.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/fonts/simple-line-icons/style.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <style>
     .errorWrap {
     padding: 10px;
@@ -139,61 +151,61 @@ while ($row=mysqli_fetch_array($ret)) {
     <td><a class="btn btn-outline-primary" href="selected.php?aticid=<?php echo $row['id'];?>" target="_blank">Print</a></td>
   </tr>
   <tr>
-    <th>Student First Name</th>
     <td><?php  echo $row['firstName'];?></td>
+    <th>Student First Name</th>
     </td>
 
   </tr>
   <tr>
-    <th>Student Second Name</th>
     <td><?php  echo $row['secondName'];?></td>
+    <th>Student Second Name</th>
 
   </tr>
   <tr>
-    <th>Student Last Name</th>
     <td><?php  echo $row['lastName'];?></td>
-
+    
+    <th>Student Last Name</th>
   </tr>
   <tr>
-    <th>Student Kurdish First Name</th>
     <td><?php  echo $row['kuFirstName'];?></td>
+    <th>Student Kurdish First Name</th>
 
   </tr>
   <tr>
-    <th>Student Kurdish Second Name</th>
     <td><?php  echo $row['kuSecondName'];?></td>
+    <th>Student Kurdish Second Name</th>
 
   </tr>
   <tr>
-    <th>Student Kurdish Last Name</th>
     <td><?php  echo $row['kuLastName'];?></td>
+    <th>Student Kurdish Last Name</th>
 
   </tr>
   <tr>
-  <th>Student Pic</th>
-  <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
-
+    <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
+    
+    <th>Student Pic</th>
 </tr>
 
 <tr>
-    <th>Student Gender</th>
-    <td><?php  echo $row['gender'];?></td>
+  <td><?php  echo $row['gender'];?></td>
+  <th>Student Gender</th>
 
   </tr>
   
   <tr>
-    <th>Student Id Code</th>
     <td><?php  echo $row['idCode'];?></td>
-
+    <th>Student Id Code</th>
+    
   </tr>
   <tr>
-    <th>Student Faculty</th>
     <td><?php  echo $row['facultyName'];?></td>
+    <th>Student Faculty</th>
 
   </tr>
   <tr>
-    <th>Student Department</th>
     <td><?php  echo $row['depName'];?></td>
+    <th>Student Department</th>
 
   </tr>
   <?php if( $row['status'] == 'pending'){?>
@@ -246,7 +258,27 @@ while ($row=mysqli_fetch_array($ret)) {
      
 
 <?php include('includes/footer.php');?>
-
+  <!-- BEGIN VENDOR JS-->
+  <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/raphael-min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/morris.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js"
+  type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js"
+  type="text/javascript"></script>
+  <script src="app-assets/data/jvector/visitor-data.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN MODERN JS-->
+  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
+  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
+  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+  <!-- END MODERN JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="app-assets/js/scripts/pages/dashboard-sales.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
 </body>
 </html>
 <?php  } ?>

@@ -211,6 +211,7 @@ try{
         </div>
         <!-- ////////////////////////////////////////////////////////////////////////////-->
         <?php include('includes/footer.php'); ?>
+        <?php include('includes/footerjs.php'); ?>
     
     </body>
 

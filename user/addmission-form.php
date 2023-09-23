@@ -117,7 +117,19 @@ if (strlen($_SESSION['uid'] == 0)) {
   <head>
 
     <title> فۆرمی وەرگرتنی قوتابیان</title>
-    <?php include('../include/links.php');?>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
+  rel="stylesheet">
+  <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
+  rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu-modern.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/morris.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/fonts/simple-line-icons/style.css">
+  <link rel="stylesheet" type="text/css" href="app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   
  <style>
       .errorWrap {
@@ -486,9 +498,18 @@ if (strlen($_SESSION['uid'] == 0)) {
                               <fieldset>
                                 <h5>فاکەلتی </h5>
                                 <div class="form-group">
-                                  <input class="form-control white_bg" id="idCode" name="facultyId" type="text" required>
-                                   
+
+<select class="form-control white_bg" id="facultyId " name="facultyId" >
+ 
+                              
+                                  <option value="ئەندازیاری">ئەندازیاری </option>
+                                  <option value="زانست">زانست</option>
+                                  <option value="ئاداب">ئاداب</option>
+                                  <option value="پەروەردە">پەروەردە</option>
+                                  <option value="یاسا">یاسا</option>
+                                  </select>
                                 </div>
+                                
                               </fieldset>
                               <fieldset>
                                 <h5>بەش </h5>
@@ -569,61 +590,64 @@ $row=$roww;
 
                 <table border="1" class="table table-bordered mg-b-0">
                 <tr>
-    <th>زانیاری فۆرمی وەرگرتنی قوتابی</th>
+                  <td></td>
+    <th>زانیاری فۆرمی وەرگرتنی قوتابی
+
+    </th>
     <!-- <td><a class="btn btn-outline-primary" href="selected.php?aticid=<?php echo $row['id'];?>" target="_blank">Print</a></td> -->
   </tr>
   <tr>
-    <th> ناوی یەکەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['firstName'];?></td>
-    </td>
+  </td>
+  <th> ناوی یەکەمی قوتابی بە ئینگلیزی</th>
 
   </tr>
   <tr>
-    <th>ناوی دووەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['secondName'];?></td>
+    <th>ناوی دووەمی قوتابی بە ئینگلیزی</th>
 
   </tr>
   <tr>
-    <th>ناوی سێییەمی قوتابی بە ئینگلیزی</th>
     <td><?php  echo $row['lastName'];?></td>
+    <th>ناوی سێییەمی قوتابی بە ئینگلیزی</th>
 
   </tr>
   <tr>
-    <th>ناوی سیانی قوتابی بە کوردی</th>
     <td><?php  echo $row['kuFirstName'];?></td>
+    <th>ناوی سیانی قوتابی بە کوردی</th>
 
   </tr>
   <tr>
-    <th>ژمارەی موبایل</th>
     <td><?php  echo $row['kuSecondName'];?></td>
+    <th>ژمارەی موبایل</th>
 
   </tr>
   
   <tr>
-  <th>وێنەی قوتابی</th>
-  <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
+    <td><img src="../user/userimages/<?php echo $row['image'];?>" width="200" height="150"></td>
+    <th>وێنەی قوتابی</th>
 
 </tr>
 
 <tr>
-    <th>ڕەگەز</th>
-    <td><?php  echo $row['gender'];?></td>
+  <td><?php  echo $row['gender'];?></td>
+  <th>ڕەگەز</th>
 
   </tr>
   
   <tr>
-    <th>ژماوەی ڕەگەزنامە</th>
     <td><?php  echo $row['idCode'];?></td>
+    <th>ژماوەی ڕەگەزنامە</th>
 
   </tr>
   <tr>
-    <th>فاکەلتی</th>
     <td><?php  echo $row['facultyId'];?></td>
+    <th>فاکەلتی</th>
 
   </tr>
   <tr>
-    <th>بەش</th>
     <td><?php  echo $row['departmentId'];?></td>
+    <th>بەش</th>
 
                 </table>
                 <?php
@@ -634,7 +658,27 @@ $row=$roww;
     </div>
     
     <?php include('includes/footer.php'); ?>
-
+  <!-- BEGIN VENDOR JS-->
+  <script src="app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/raphael-min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/morris.min.js" type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js"
+  type="text/javascript"></script>
+  <script src="app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js"
+  type="text/javascript"></script>
+  <script src="app-assets/data/jvector/visitor-data.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN MODERN JS-->
+  <script src="app-assets/js/core/app-menu.js" type="text/javascript"></script>
+  <script src="app-assets/js/core/app.js" type="text/javascript"></script>
+  <script src="app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+  <!-- END MODERN JS-->
+  <!-- BEGIN PAGE LEVEL JS-->
+  <script src="app-assets/js/scripts/pages/dashboard-sales.js" type="text/javascript"></script>
+  <!-- END PAGE LEVEL JS-->
   </body>
 
   </html>

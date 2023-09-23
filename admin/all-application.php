@@ -155,6 +155,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
+<?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

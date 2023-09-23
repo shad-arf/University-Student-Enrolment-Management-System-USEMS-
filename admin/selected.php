@@ -247,6 +247,7 @@ idCardFile<br>
     window.print();
     
   </script>
+        <?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

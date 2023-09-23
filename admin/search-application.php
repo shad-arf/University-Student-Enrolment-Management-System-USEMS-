@@ -82,7 +82,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   <div class="row">
                       <div class="col-xl-6 col-lg-12">
                         <fieldset>
-                          <h5>Search by Student Name / Email id / Contact number
+                          <h5>Search by Student 12th grade ID / Student first Name/ Identify  id card / Contact number
                          
                           </h5>
                           <div class="form-group">
@@ -222,6 +222,7 @@ $cnt=$cnt+1;
   </div>
   <!-- ////////////////////////////////////////////////////////////////////////////-->
 <?php include('includes/footer.php');?>
+<?php include('includes/footerjs.php'); ?>
 
 </body>
 </html>

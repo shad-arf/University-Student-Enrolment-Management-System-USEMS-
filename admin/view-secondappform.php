@@ -283,6 +283,7 @@ while ($row=mysqli_fetch_array($ret)) {
      
 
 <?php include('includes/footer.php');?>
+<?php include('includes/footerjs.php'); ?>
   
 
 </body>
