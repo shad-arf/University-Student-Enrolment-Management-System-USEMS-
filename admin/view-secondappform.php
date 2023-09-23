@@ -63,7 +63,8 @@ echo "<script>window.location.href ='pending-application.php'</script>";
 <head>
 
   <title>College Addmission Management System|| View Form</title>
- 
+  <?php include('../include/links.php');?>
+
      <style>
     .errorWrap {
     padding: 10px;
