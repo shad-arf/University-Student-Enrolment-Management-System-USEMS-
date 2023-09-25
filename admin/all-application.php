@@ -69,14 +69,18 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <table class="table mb-0">
     <caption>First Application</caption>
     <thead>
-        <tr>
-            <th></th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>Id Code</th>
-            <th>Mobile</th>
-            <th>Action</th>
-        </tr>
+    <tr>
+    <tr>
+                <th> </th>
+
+                  <th>First Name</th>
+                  <th>Second Name</th>
+                  <th>Third Name</th>
+                  <th>Id Code</th>
+                   <th>Action</th>
+                  <th>More</th>
+
+                </tr>
     </thead>
     <?php
     $admid = $_SESSION['aid'];
@@ -87,7 +91,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
     if ($type == 'super_admin') {
        
-       $ret = mysqli_query($con, "SELECT tbladmapplications.idCode, tbladmapplications.id AS apid, tbladmapplications.firstName, tbladmapplications.secondName  from tbladmapplications inner join student_data on student_data.id=tbladmapplications.userId");
+       $ret = mysqli_query($con, "SELECT * from tbladmapplications");
         
     } else {
         $ret = mysqli_query($con, "select tbladmapplications.idCode, tbladmapplications.id as apid, tbladmapplications.firstName, tbladmapplications.secondName from tbladmapplications inner join student_data on student_data.id=tbladmapplications.userId where tbladmapplications.facultyId='$type'");
@@ -95,13 +99,15 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
     $cnt = 1;
     while ($row = mysqli_fetch_array($ret)) {
     ?>
-        <tr>
-            <td><?php echo $cnt; ?></td>
-            <td><?php echo $row['firstName']; ?></td>
-            <td><?php echo $row['secondName']; ?></td>
-            <td><?php echo $row['idCode']; ?></td>
-            <td><a href="view-appform.php?aticid=<?php echo $row['apid']; ?>" target="_blank">View Details</a></td>
-        </tr>
+           <tr>
+          <td><?php echo $cnt; ?></td>
+          <td><?php echo $row['firstName']; ?></td>
+          <td><?php echo $row['secondName']; ?></td>
+          <td><?php echo $row['lastName']; ?></td>
+          <td><?php echo $row['userId']; ?></td>
+          <td><?php echo $row['status']; ?></td>
+          <td><a href="view-appform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
+      </tr>
         <?php
         $cnt = $cnt + 1;
     } ?>
@@ -110,32 +116,40 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <table class="table mb-0">
     <caption>Second Application</caption>
     <thead>
-        <tr>
-            <th></th>
-            <th>Nationality</th>
-            <th>idCardNumber</th>
-            <th>Mobile</th>
-            <th>Action</th>
-        </tr>
+    <tr>
+                <th> </th>
+
+                <th>idCardNumber</th>
+                <th>City</th>
+                <th>Id Code</th>
+                <th>Action</th>
+                <th>More</th>
+                </tr>
     </thead>
     <?php
-    if ($type == 'super_admin') {
-        $ret = mysqli_query($con, "select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality, tblsecondadmapplications.idCardNumber from tblsecondadmapplications inner join student_data on student_data.id=tblsecondadmapplications.userId");
-    } else {
-        $ret = mysqli_query($con, "select tblsecondadmapplications.id as apid, tblsecondadmapplications.nationality, tblsecondadmapplications.idCardNumber from tblsecondadmapplications inner join student_data on student_data.id=tblsecondadmapplications.userId inner join tbladmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tbladmapplications.facultyId='$type'");
-    }
-    $cnt = 1;
-    while ($row = mysqli_fetch_array($ret)) {
-    ?>
-        <tr>
-            <td><?php echo $cnt; ?></td>
-            <td><?php echo $row['nationality']; ?></td>
-            <td><?php echo $row['idCardNumber']; ?></td>
-            <td><a href="view-secondappform.php?aticid=<?php echo $row['apid']; ?>" target="_blank">View Details</a></td>
-        </tr>
-        <?php
-        $cnt = $cnt + 1;
-    } ?>
+       
+   if($type =='super_admin'){
+    $ret=mysqli_query($con,"SELECT * FROM  tblsecondadmapplications");
+
+  }   
+$cnt=1;
+while ($row=mysqli_fetch_array($ret)) {
+
+?>
+             
+               <tr>
+                 <td><?php echo $cnt;?></td>
+                 <td><?php  echo $row['idCardNumber'];?></td>
+                 <td><?php  echo $row['city'];?></td>
+                 <td><?php  echo $row['userId'];?></td>
+                 <td><?php  echo $row['status'];?></td>
+
+                 <td><a href="view-secondappform.php?aticid=<?php echo $row['userId'];?>" target="_blank">View Details</a></td>
+
+               </tr>
+               <?php 
+$cnt=$cnt+1;
+}?>
 </table>
 
 <?php include('includes/footer.php'); ?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
 
 include('includes/dbconnection.php');
 if (strlen($_SESSION['uid']==0)) {
@@ -30,6 +30,7 @@ if (strlen($_SESSION['uid']==0)) {
      $certificate12File = $_FILES["certificate12File"]["name"];
      $bloodTestFile = $_FILES["bloodTestFile"]["name"];
      $eyeTestFile = $_FILES["eyeTestFile"]["name"];
+      $payment = $_FILES["payment"]["name"];
 
      $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif");
 
@@ -82,6 +83,13 @@ if (strlen($_SESSION['uid']==0)) {
       // Validation for allowed extensions .in_array() function searches an array for a specific value.
       if (!in_array($eyeTestFileExtension, $allowed_extensions)) {
         echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for eyeTestFile');</script>";
+      } else 
+       //checkfor payment extensions
+      $paymentExtension = substr($payment, strlen($payment) - 4, strlen($payment));
+      // allowed extensions
+      // Validation for allowed extensions .in_array() function searches an array for a specific value.
+      if (!in_array($paymentExtension, $allowed_extensions)) {
+        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for payment');</script>";
       } else {
         //in here you can insert data and upload files
         $idCardFileUpload = md5($idCardFile) . $idCardFileExtension;
@@ -94,8 +102,11 @@ if (strlen($_SESSION['uid']==0)) {
         move_uploaded_file($_FILES["bloodTestFile"]["tmp_name"], "userdocs/" . $bloodTestFileUpload);
         $eyeTestFileUpload = md5($eyeTestFile) . $eyeTestFileExtension;
         move_uploaded_file($_FILES["eyeTestFile"]["tmp_name"], "userdocs/" . $eyeTestFileUpload);
+        $paymentUpload = md5($payment) . $paymentExtension;
+        move_uploaded_file($_FILES["payment"]["tmp_name"], "userdocs/" . $paymentUpload);
       $userId = $_SESSION['uid'];
-      $query = mysqli_query($con, "INSERT INTO `tblsecondadmapplications`(`userId`,`dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`, `adminNote`) VALUES ('$userId','$dob','$nationality','$motherName','$placeOfBreath','$placeHeSheLive','$country','$governate','$city','$village','$state','$idCardNumber','$nationaltyNumber','$phoneNumberFirstPerson','$studentPlace','$religion','$idCardFileUpload','$nationaltyCardFileUpload','$certificate12FileUpload','$bloodTestFileUpload','$eyeTestFileUpload',' ')");
+      $query = mysqli_query($con, "INSERT INTO `tblsecondadmapplications`(`userId`,`dob`, `nationality`, `motherName`, `placeOfBreath`, `placeHeSheLive`, `country`, `governate`, `city`, `village`, `state`, `idCardNumber`, `nationaltyNumber`, `phoneNumberFirstPerson`, `studentPlace`, `religion`, `idCardFile`, `nationaltyCardFile`, `certificate12File`, `bloodTestFile`, `eyeTestFile`,`payment`, `adminNote`) 
+                                                                  VALUES ('$userId','$dob','$nationality','$motherName','$placeOfBreath','$placeHeSheLive','$country','$governate','$city','$village','$state','$idCardNumber','$nationaltyNumber','$phoneNumberFirstPerson','$studentPlace','$religion','$idCardFileUpload','$nationaltyCardFileUpload','$certificate12FileUpload','$bloodTestFileUpload','$eyeTestFileUpload','$paymentUpload',' ')");
     
         if ($query) {
 
@@ -148,7 +159,7 @@ if (strlen($_SESSION['uid']==0)) {
      $certificate12File = $_FILES["certificate12File"]["name"];
      $bloodTestFile = $_FILES["bloodTestFile"]["name"];
      $eyeTestFile = $_FILES["eyeTestFile"]["name"];
-
+    $payment = $_FILES["payment"]["name"];
      $allowed_extensions = array(".jpg", "jpeg", ".png", ".gif");
 
       //checkfor idcardfile extensions
@@ -201,6 +212,13 @@ if (strlen($_SESSION['uid']==0)) {
       if (!in_array($eyeTestFileExtension, $allowed_extensions)) {
         echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for eyeTestFile');</script>";
       } else {
+            //checkfor payment extensions
+      $paymentExtension = substr($payment, strlen($payment) - 4, strlen($payment));
+      // allowed extensions
+      // Validation for allowed extensions .in_array() function searches an array for a specific value.
+      if (!in_array($paymentExtension, $allowed_extensions)) {
+        echo "<script>alert('Invalid format. Only jpg / jpeg/ png /gif format allowed for payment');</script>";
+      } else
         //in here you can insert data and upload files
         $idCardFileUpload = md5($idCardFile) . $idCardFileExtension;
         move_uploaded_file($_FILES["idCardFile"]["tmp_name"], "userdocs/" . $idCardFileUpload);
@@ -212,8 +230,10 @@ if (strlen($_SESSION['uid']==0)) {
         move_uploaded_file($_FILES["bloodTestFile"]["tmp_name"], "userdocs/" . $bloodTestFileUpload);
         $eyeTestFileUpload = md5($eyeTestFile) . $eyeTestFileExtension;
         move_uploaded_file($_FILES["eyeTestFile"]["tmp_name"], "userdocs/" . $eyeTestFileUpload);
+           $paymentUpload = md5($payment) . $paymentExtension;
+        move_uploaded_file($_FILES["payment"]["tmp_name"], "userdocs/" . $paymentUpload);
 
-        $query = mysqli_query($con, "UPDATE `tblsecondadmapplications` SET `dob`='$dob',`nationality`='$nationality',`motherName`='$motherName',`placeOfBreath`='$placeOfBreath',`placeHeSheLive`='$placeHeSheLive',`country`='$country',`governate`='$governate',`city`='$city',`village`='$village',`state`='$state',`idCardNumber`='$idCardNumber',`nationaltyNumber`='$nationaltyNumber',`phoneNumberFirstPerson`='$phoneNumberFirstPerson',`studentPlace`='$studentPlace',`religion`='$religion',`idCardFile`='$idCardFileUpload',`nationaltyCardFile`='$nationaltyCardFileUpload',`certificate12File`='$certificate12FileUpload',`bloodTestFile`='$bloodTestFileUpload',`eyeTestFile`='$eyeTestFileUpload',`status`='pending' WHERE userId='$userId'");
+        $query = mysqli_query($con, "UPDATE `tblsecondadmapplications` SET `dob`='$dob',`nationality`='$nationality',`motherName`='$motherName',`placeOfBreath`='$placeOfBreath',`placeHeSheLive`='$placeHeSheLive',`country`='$country',`governate`='$governate',`city`='$city',`village`='$village',`state`='$state',`idCardNumber`='$idCardNumber',`nationaltyNumber`='$nationaltyNumber',`phoneNumberFirstPerson`='$phoneNumberFirstPerson',`studentPlace`='$studentPlace',`religion`='$religion',`idCardFile`='$idCardFileUpload',`nationaltyCardFile`='$nationaltyCardFileUpload',`certificate12File`='$certificate12FileUpload',`bloodTestFile`='$bloodTestFileUpload',`eyeTestFile`='$eyeTestFileUpload',`payment`='$oaymentUpload',`status`='pending' WHERE userId='$userId'");
 
         if ($query) {
 
@@ -544,6 +564,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                   </div>
                 </fieldset>
               </div>
+               <div class="col-xl-6 col-lg-12">
+                <fieldset>
+                  <h5>وەسلی پارەدان</h5>
+                  <div class="form-group">
+                    <input class="form-control white_bg" id="bloodTestFile"  name="payment"  type="file" accept=".jpg, .jpeg, .png, .gif, .pdf" required>
+                  </div>
+                </fieldset>
+              </div>
           
             </div>
 
@@ -716,6 +744,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                   </tr>
                   <tr>
                     <td><img src="../user/userdocs/<?php echo $row['eyeTestFile'];?>" width="200" height="150"></td>
+                    <th>پشکنینی چاو</th>
+                  </tr>
+                  <tr>
+                    <td><img src="../user/userdocs/<?php echo $row['payment'];?>" width="200" height="150"></td>
                     <th>پشکنینی چاو</th>
                   </tr>
                 </table>
@@ -945,7 +977,14 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
                                       </div>
                                     </fieldset>
                                   </div>
-                              
+                                 <div class="col-xl-6 col-lg-12">
+                                    <fieldset>
+                                      <h5>وەسلی پارەدان</h5>
+                                      <div class="form-group">
+                                        <input class="form-control white_bg" id="eyeTestFile"  name="payment"  type="file"  required>
+                                      </div>
+                                    </fieldset>
+                                  </div>
                                 </div>
 
                               

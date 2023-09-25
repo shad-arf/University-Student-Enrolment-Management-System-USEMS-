@@ -116,13 +116,14 @@ while ($row = mysqli_fetch_array($ret)) {
 <caption>Second Application</caption>
 
  <thead>
-                <tr>
+ <tr>
                 <th> </th>
 
                 <th>idCardNumber</th>
-                <th>Mobile</th>
+                <th>City</th>
                 <th>Id Code</th>
                 <th>Action</th>
+                <th>More</th>
                 </tr>
               </thead>
   <?php
@@ -138,8 +139,8 @@ while ($row=mysqli_fetch_array($ret)) {
               
                 <tr>
                   <td><?php echo $cnt;?></td>
+                  <td><?php  echo $row['idCardNumber'];?></td>
                   <td><?php  echo $row['city'];?></td>
-                  <td><?php  echo $row['state'];?></td>
                   <td><?php  echo $row['userId'];?></td>
                   <td><?php  echo $row['status'];?></td>
 
