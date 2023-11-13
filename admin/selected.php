@@ -64,7 +64,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
  
 <?php
 $cid=$_GET['aticid'];
-$ret=mysqli_query($con,"select tbladmapplications.*,tblfaculty.*,tbluser.*,tblsecondadmapplications.* from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId  inner join tblfaculty on tbladmapplications.facultyId=tblfaculty.id inner join tblsecondadmapplications on tblsecondadmapplications.userId=tbladmapplications.userId where tbladmapplications.id='$cid'");
+$ret=mysqli_query($con,"SELECT
+ tbladmapplications.*,tblfaculty.*,tbluser.*,tblsecondadmapplications.*
+  from  tbladmapplications inner join tbluser on tbluser.id=tbladmapplications.userId  
+  inner join tblfaculty on tbladmapplications.facultyId=tblfaculty.id 
+  inner join tblsecondadmapplications on tblsecondadmapplications.userId=tbladmapplications.userId
+   where tbladmapplications.id='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 // var_dump($row);
